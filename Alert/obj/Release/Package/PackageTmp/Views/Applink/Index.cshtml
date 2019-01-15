@@ -1,0 +1,373 @@
+﻿
+@{
+    ViewBag.Title = "Applink";
+}
+<style title="" type="text/css">
+    table col.c1 {
+        width: 45px;
+    }
+
+    table col.c2 {
+        width: 45px;
+    }
+
+    table col.c3 {
+        width: 110px;
+    }
+
+    table col.c4 {
+        width: 150px;
+    }
+
+    table col.c5 {
+        width: 280px;
+    }
+
+    table col.c6 {
+        width: auto;
+    }
+</style>
+<section class="content-header">
+    <!--<h1>
+        Top Navigation
+    </h1>-->
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">App link</a></li>
+    </ol>
+</section>
+<section class="content">
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Search</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <!--S Row 1-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">App name (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="app_name" placeholder="Input app name" id="app_name" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">App type (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <select name="app_type" id="app_type" class="combos tab-event">
+                                <option value=""></option>
+                                <option value="1">iOS</option>
+                                <option value="2">Android</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">App link (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="app_link" placeholder="Input app link" id="app_link" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <!--E Row 3-->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div><!--E box-->
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title box-title-found">
+                Found <span id="totals">0</span> results
+            </h3>
+            <div class="box-tools pull-right">
+                <ul class="button-group pull-right btnpermission">
+                    <li id="search">
+                        <button class="button">
+                            <i class="fa fa-search"></i>
+                            Search
+                        </button>
+                    </li>
+                    <li id="refresh">
+                        <button class="button">
+                            <i class="fa fa-refresh"></i>
+                            Refresh
+                        </button>
+                    </li>
+                    <li id="save">
+                        <button class="button">
+                            <i class="fa fa-plus"></i>
+                            Add
+                        </button>
+                    </li>
+                    <li id="edit">
+                        <button class="button">
+                            <i class="fa fa-save"></i>
+                            Edit
+                        </button>
+                    </li>
+                    <li id="delete">
+                        <button type="button" class="button">
+                            <i class="fa fa-times"></i>
+                            Delete
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="box-body">
+            <!--E Grid View Data-->
+            <div id="gridviewData">
+                <!--header-->
+                <div id="cHeader">
+                    <div id="tHeader">
+                        <table width="100%" cellspacing="0" border="1" class="table ">
+                            @{
+                                for (var i = 1; i < 7; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" autocomplete="off" /></th>
+                                <th>No.</th>
+                                <th>App name</th>
+                                <th>App type</th>
+                                <th>App link</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end header-->
+                <!--body-->
+                <div id="data">
+                    <div id="gridView">
+                        <table id="group" width="100%" cellspacing="0" border="1">
+                            @{
+                                for (var i = 1; i < 7; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tbody id="grid-rows"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--end body-->
+            </div><!--E Grid View Data-->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            &nbsp;
+        </div>
+        <!-- /.box-footer-->
+    </div><!--E box-->
+</section>
+<div class="loading" style="display: none;">
+    <div class="blockUI blockOverlay" style="width: 100%;height: 100%;top:0px;left:0px;position: absolute;background-color: rgb(0,0,0);opacity: 0.1;z-index: 1000;">
+    </div>
+    <div class="blockUI blockMsg blockElement" style="width: 30%;position: absolute;top: 15%;left:35%;text-align: center;">
+        <img src="@Url.Content("~/Content/images/preloader.gif")" style="z-index: 2;position: absolute;" />
+    </div>
+</div>
+<input type="hidden" name="id" id="id" />
+<script type="text/javascript">
+    var func = "@Url.Action("getList")";
+    var cpage = 0;
+    var search = null;
+    $(function () {
+        getListSearch(func);
+        $("#search").click(function () {
+            getListSearch(func);
+        });
+        $("#refresh").click(function () {
+            refresh();
+        });
+        $("#save").click(function () {
+            save();
+        });
+        $("#edit").click(function () {
+            edit();
+        });
+        $("#delete").click(function () {
+            var id = getCheckedId();
+            confirmDelete(id);
+        });
+        init();
+    });
+    function confirmDelete(id) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": true,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "0",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        var cf = cfDelete;
+        toastr.warning('<div class="txtconfirmDelete">' + cf + '</div><div class="text-center"><button type="button" onclick="okDelete(' + id + ');" id="okdelete" class="btn btn-danger">' + deletes + '</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">' + cancel + '</button></div>')
+    }
+    function okDelete(id) {
+        var idList = getCheckedId();
+        //var id = $('#id').val();
+        var deletes = "@Url.Action("deletes")";
+        $.ajax({
+            url: deletes,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { id: id },
+            success: function (obj) {
+                getListSearch(func);
+            }
+        });
+    }
+    function save() {
+        var search = getSearch();
+        var objectSearch = JSON.parse(search);
+        if (objectSearch.app_name == "") {
+            warning("App name can not be empty"); return false;
+        }
+        if (objectSearch.app_type == "") {
+            warning("Select a app type"); return false;
+        }
+        if (objectSearch.app_link == "") {
+            warning("App link can not be empty"); return false;
+        }
+        var save = "@Url.Action("save")";
+        var data = new FormData();
+        data.append('search', search);
+        $(".loading").show();
+        $.ajax({
+            url: save,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (obj) {
+                $(".loading").hide();
+                if (obj.status == 1) {
+                    success("Add successfully");
+                    getListSearch(func);
+                }
+                else {
+                    error("Add Failed");
+                }
+            }
+        });
+    }
+    function edit() {
+        var id = $('#id').val();
+        var search = getSearch();
+        var objectSearch = JSON.parse(search);
+        if (id == "") {
+            warning("Select a item"); return false;
+        }
+        if (objectSearch.app_name == "") {
+            warning("App name can not be empty"); return false;
+        }
+        if (objectSearch.app_type == "") {
+            warning("Select a app type"); return false;
+        }
+        if (objectSearch.app_link == "") {
+            warning("App link can not be empty"); return false;
+        }
+        var save = "@Url.Action("edits")";
+        var data = new FormData();
+        data.append('search', search);
+        data.append('id', id);
+        $(".loading").show();
+        $.ajax({
+            url: save,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function (obj) {
+                $(".loading").hide();
+                if (obj.status == 1) {
+                    success("Edit successfully");
+                    getListSearch(func);
+                }
+                else {
+                    error("Edit Failed");
+                }
+            }
+        });
+    }
+    function getListSearch(func) {
+        $(".loading").show();
+        $.ajax({
+            url:  func,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { page: cpage, search: search, order: order, index: index },
+            success: function (obj) {
+                $(".loading").hide();
+                $('#totals').html(obj.total);
+                $('#grid-rows').html(obj.content);
+                if (typeof (funcList) == 'function') {
+                    funcList(obj);
+                }
+            }
+        });
+    }
+    function funcList(obj) {
+        $(".edit").each(function (e) {
+            $(this).click(function () {
+                var id = $(this).attr("id");
+                var app_type = $(this).attr("id");
+                var app_name = $('.app_name').eq(e).html();
+                var app_link = $('.app_link').eq(e).html();
+                //Set data
+                $('#app_type').multipleSelect('setSelects', app_type.split(','));
+
+                $('#password,#cfpassword').val('');
+                $('#id').val(id);
+                $('#app_name').val(app_name.trim());
+                $('#app_link').val(app_link.trim());
+            });
+        });
+    }
+    function refresh() {
+        $(".searchs").val("");
+        $("selct.combos").multipleSelect("uncheckAll");
+    }
+    function init() {
+        $("#app_type").multipleSelect({
+            filter: true,
+            placeholder: 'Select a app type',
+            single: true
+        });
+        $(".searchs").val("");
+        $("selct.combos").multipleSelect("uncheckAll");
+    }
+</script>

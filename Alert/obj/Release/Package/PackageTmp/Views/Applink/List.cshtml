@@ -1,0 +1,26 @@
+﻿@{
+    int i = 0;
+}
+@foreach (var item in ViewBag.datas)
+{
+    string app_type = "";
+    if (item.app_type == 1)
+    {
+        app_type = "iOS";
+    }
+    else
+    {
+        app_type = "Android";
+    }
+    <tr class="edit"
+        id="@item.id" app_type="@item.app_type" >
+        <td class="text-center">
+            <input id="@item.id" class="" type="checkbox" value="@item.id" name="keys[]">
+        </td>
+        <td class="text-center">@(i += 1)</td>
+        <td class="app_name">@item.app_name</td>
+        <td class="app_type">@app_type</td>
+        <td class="app_link">@item.app_link</td>
+        <td></td>
+    </tr>
+}

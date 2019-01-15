@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Permission";
+}
+<style title="" type="text/css">
+    table col.c1 {
+        width: 45px;
+    }
+    table col.c2 {
+        width: 250px;
+    }
+    table col.c3 {
+        width: 60px;
+    }
+    table col.c4 {
+        width: 60px;
+    }
+    table col.c5 {
+        width: 60px;
+    }
+    table col.c6 {
+        width: 60px;
+    }
+    table col.c7 {
+         width: auto;
+    }
+    .control-label.col-md-4 {
+        white-space: nowrap;
+    }
+</style>
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="Home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="Group">Group</a></li>
+        <li><a href="#">Permission</a></li>
+    </ol>
+</section>
+<section class="content">
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Permission</h3>
+            <div class="box-tools pull-right">
+                <ul class="button-group pull-right btnpermission">
+                    <li id="edit">
+                        <button class="button">
+                            <i class="fa fa-save"></i>
+                            Update
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="box-body">
+            <!--E Grid View Data-->
+            <div id="gridviewData">
+                <!--header-->
+                <div id="cHeader">
+                    <div id="tHeader">
+                        <table width="100%" cellspacing="0" border="1" class="table ">
+                            @{
+                                for (var i = 1; i < 8; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tr>
+                                <th>No.</th>
+                                <th>Menu Name</th>
+                                <th>View</th>
+                                <th>Add</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end header-->
+                <!--body-->
+                <div id="data">
+                    <div id="gridView">
+                        <table id="group" width="100%" cellspacing="0" border="1">
+                            @{
+                                for (var i = 1; i < 8; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tbody id="grid-rows">
+                                @{
+                                    int j = 0;
+                                }
+                                @foreach (var item in ViewBag.menus)
+                                {
+                                    var names = item.menu_name;
+                                    var styles = "";
+                                    if (item.parentid == 0)
+                                    {
+                                        styles = "font-weight:600";
+                                    }
+                                    else
+                                    {
+                                        styles = "padding-left:20px;";
+                                    }
+                                    <tr>
+                                        <td class="text-center">@(j += 1)</td>
+                                        <td style="@styles">@names</td>
+                                        <td class="text-center"><input type="checkbox" id="view_@item.id" class="view" id="@item.id" autocomplete="off" /></td>
+                                        <td class="text-center"><input type="checkbox" id="add_@item.id" class="add" id="@item.id" autocomplete="off" /></td>
+                                        <td class="text-center"><input type="checkbox" id="edit_@item.id" class="edit" id="@item.id" autocomplete="off" /></td>
+                                        <td class="text-center"><input type="checkbox" id="delete_@item.id" class="delete" id="@item.id" autocomplete="off" /></td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--end body-->
+            </div><!--E Grid View Data-->
+        </div>
+        <!-- /.box-body -->
+    </div><!--E box-->
+    <!--S box-->
+</section>

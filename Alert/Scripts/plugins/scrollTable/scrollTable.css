@@ -1,0 +1,93 @@
+body{ 
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+#data{
+	 overflow-y:auto;
+	 width:100%;
+	 margin-top:-1px;
+}
+#gridView{ 
+	 max-height:350px; 
+	 min-height:200px; 
+	 position:relative; 
+	 padding:0; 
+	 margin-top:0;	 
+}
+#tHeader{
+	position:relative; 
+	height:auto; 
+	width:100%;
+	overflow-x:hidden;
+}
+#tHeader table{
+	border:none !important;	
+	margin-bottom:0 !important;
+}
+#cHeader{ 
+	width:100%; 
+	background:#fafafa;
+	position:relative;
+	border:1px solid #d1dde2;
+	background-color: #e3e4e6;
+    background-image: -moz-linear-gradient(center top , #f9f9f9, #e3e4e6);
+	background-image: -webkit-gradient(center top , #f9f9f9, #e3e4e6);
+	background-image: -ms-linear-gradient(center top , #f9f9f9, #e3e4e6);
+	background-image: -o-linear-gradient(center top , #f9f9f9, #e3e4e6);
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+}
+table{ border-collapse:collapse; table-layout:	fixed; border:1px solid #d1dde2 none !important;}
+
+table th{ 
+	border-style: solid;
+    border-width: 0 1px 0 0;
+    color: #525050;
+    padding: 5px;
+    text-align: center;
+	background-color: #e3e4e6;
+    background-image: -moz-linear-gradient(center top , #f9f9f9, #e3e4e6);
+	background-image: -webkit-gradient(center top , #f9f9f9, #e3e4e6);
+	background-image: -ms-linear-gradient(center top , #f9f9f9, #e3e4e6);
+	background-image: -o-linear-gradient(center top , #f9f9f9, #e3e4e6);
+    border-radius: 0 !important;
+	font-weight:500;
+	padding:5px !important;
+	font-size:14px;
+}
+table td{
+	line-height: 15px;
+	padding: 5px;
+	border:1px solid #d1dde2;
+	overflow-wrap: break-word;
+	font-size:14px;
+}
+table th{
+	border:none ;
+	border-right:1px solid #d1dde2;
+}
+table th:last-child{
+	border-right:none;
+}
+.noClick{
+	pointer-events: none;
+}
+tr.edit:nth-child(2n) {
+    background: #eff3f5 none repeat scroll 0 0;
+    cursor: auto;
+}
+tr.edit:hover{
+	background-color: #e3f5fd;
+}
+.datepicker .table{
+	width:auto !important;	
+}
+.input-group-addon{
+	padding:6px 8px !important;
+	color:#9a9b8c !important;	
+}
+.input-group.date .input-group-addon i {
+    cursor: pointer;
+    height: 11px !important;
+    width: 11px !important;
+}

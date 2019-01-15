@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    @Styles.Render("~/Scripts/plugins/bootstrap/css/bootstrap.min.css")
+    <!-- Font Awesome -->
+    <!-- Ionicons -->
+    @Styles.Render("~/Content/dist/css/AdminLTE.css")
+    @Styles.Render("~/Content/dist/css/skins/_all-skins.min.css")
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Scripts/plugins/multipleselect/multiple-select.css")
+    @Styles.Render("~/Scripts/plugins/scrollTable/scrollTable.css")
+    @Styles.Render("~/Scripts/plugins/font-awesome/css/font-awesome.min.css")
+    @Styles.Render("~/Scripts/plugins/toast/toastr.min.css")
+
+    
+    <!-- jQuery 2.2.3 -->
+    <script type='text/javascript'>
+        var order = '';
+        var index = 'DESC';
+        var mgsError = 'Error';
+        var mgs_Msg = 'Messenger';
+        var cfDelete = 'Confirm delete';
+        var cancel = 'Cancel';
+        var deletes = 'Delete';
+        var selectAll = 'Select all';
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-2.2.3.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/multipleselect/jquery.multiple.select.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/main.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/scrollTable/scrollTable.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/scrollTable/jquery.scrollTo.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/toast/toastr.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/toast/notification.js")"></script>
+   
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
+                <div class="container">
+                    @Html.Partial("_Menu")
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+        <!-- Full Width Column -->
+        <div class="content-wrapper">
+            <div class="container">
+                @RenderBody()
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="pull-right hidden-xs">
+                    <!--<b>Version</b> 2.3.7-->
+                </div>
+                <span>Copyright &copy; @DateTime.Now.Year  <a href="#">Alert</a>.</span> All rights
+                reserved.
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- Bootstrap 3.3.6 -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/bootstrap/js/bootstrap.min.js")"></script>
+    <!-- SlimScroll -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/slimScroll/jquery.slimscroll.min.js")"></script>
+    <!-- FastClick -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/plugins/fastclick/fastclick.js")"></script>
+    <!-- AdminLTE App -->
+    <script type="text/javascript" src="@Url.Content("~/Content/dist/js/app.min.js")"></script>
+</body>
+</html>

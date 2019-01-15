@@ -1,0 +1,299 @@
+﻿@{
+    ViewBag.Title = "Group";
+}
+<style title="" type="text/css">
+    table col.c1 {
+        width: 45px;
+    }
+
+    table col.c2 {
+        width: 45px;
+    }
+    table col.c3 {
+        width: 250px;
+    }
+    table col.c4 {
+        width: 100px;
+    }
+    table col.c5 {
+        width: auto;
+    }
+    .control-label.col-md-4 {
+        white-space: nowrap;
+    }
+</style>
+<section class="content-header">
+    <!--<h1>
+        Top Navigation
+    </h1>-->
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Group</a></li>
+    </ol>
+</section>
+<section class="content">
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Search</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <!--S Row 1-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Group Name (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="group_name" placeholder="Input group" id="group_name" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-5">Group Type</label>
+                        <div class="col-md-7">
+                            <select name="grouptyid" id="grouptyid" class="combos tab-event">
+                                <option value=""></option>
+                                <option value="0">User</option>
+                                <option value="1">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--E Row 1-->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div><!--E box-->
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title box-title-found">
+                Found <span id="totals">0</span> results
+            </h3>
+            <div class="box-tools pull-right">
+                <ul class="button-group pull-right btnpermission">
+                    <li id="search">
+                        <button class="button">
+                            <i class="fa fa-search"></i>
+                            Search
+                        </button>
+                    </li>
+                    <li id="refresh">
+                        <button class="button">
+                            <i class="fa fa-refresh"></i>
+                            Refresh
+                        </button>
+                    </li>
+                    <li id="save">
+                        <button class="button">
+                            <i class="fa fa-plus"></i>
+                            Add
+                        </button>
+                    </li>
+                    <li id="edit">
+                        <button class="button">
+                            <i class="fa fa-save"></i>
+                            Edit
+                        </button>
+                    </li>
+                    <li id="delete">
+                        <button type="button" class="button">
+                            <i class="fa fa-times"></i>
+                            Delete
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="box-body">
+            <!--E Grid View Data-->
+            <div id="gridviewData">
+                <!--header-->
+                <div id="cHeader">
+                    <div id="tHeader">
+                        <table width="100%" cellspacing="0" border="1" class="table ">
+                            @{
+                                for (var i = 1; i < 6; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" autocomplete="off" /></th>
+                                <th>No.</th>
+                                <th>Group Name</th>
+                                <th>Permission</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end header-->
+                <!--body-->
+                <div id="data">
+                    <div id="gridView">
+                        <table id="group" width="100%" cellspacing="0" border="1">
+                            @{
+                                for (var i = 1; i < 6; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tbody id="grid-rows"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--end body-->
+            </div><!--E Grid View Data-->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            &nbsp;
+        </div>
+        <!-- /.box-footer-->
+    </div><!--E box-->
+</section>
+<div class="loading" style="display: none;">
+    <div class="blockUI blockOverlay" style="width: 100%;height: 100%;top:0px;left:0px;position: absolute;background-color: rgb(0,0,0);opacity: 0.1;z-index: 1000;">
+    </div>
+    <div class="blockUI blockMsg blockElement" style="width: 30%;position: absolute;top: 15%;left:35%;text-align: center;">
+        <img src="@Url.Content("~/Content/images/preloader.gif")" style="z-index: 2;position: absolute;" />
+    </div>
+</div>
+<input type="hidden" name="id" id="id" />
+<script type="text/javascript">
+    var func = "@Url.Action("getList")";
+    var cpage = 0;
+    var search = null;
+    $(function () {
+        getListSearch(func);
+        $("#search").click(function () {
+            getListSearch(func);
+        });
+        $("#refresh").click(function () {
+            refresh();
+        });
+        $("#save").click(function () {
+            save();
+        });
+        $("#edit").click(function () {
+            edit();
+        });
+        $("#delete").click(function () {
+            deletes();
+        });
+        init();
+    });
+    function deletes() {
+        var idList = getCheckedId();
+        var id = $('#id').val();
+        var deletes = "@Url.Action("deletes")";
+        $.ajax({
+            url: deletes,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { id: id },
+            success: function (obj) {
+                getListSearch(func);
+            }
+        });
+    }
+    function save() {
+        var search = getSearch();
+        var save = "@Url.Action("save")";
+        var data = new FormData();
+        //var objectfile = document.getElementById('profileAvatar').files;
+        //data.append('avatarfile', objectfile[0]);
+        data.append('search', search);
+        $.ajax({
+            url: save,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (obj) {
+                getListSearch(func);
+            }
+        });
+    }
+    function edit() {
+        var id = $('#id').val();
+        var search = getSearch();
+        var save = "@Url.Action("edits")";
+        var data = new FormData();
+        //var objectfile = document.getElementById('profileAvatar').files;
+        //data.append('avatarfile', objectfile[0]);
+        data.append('search', search);
+        data.append('id', id);
+        $.ajax({
+            url: save,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function (obj) {
+                getListSearch(func);
+            }
+        });
+    }
+    function getListSearch(func) {
+        $(".loading").show();
+        $.ajax({
+            url:  func,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { page: cpage, search: search, order: order, index: index },
+            success: function (obj) {
+                $(".loading").hide();
+                $('#totals').html(obj.total);
+                $('#grid-rows').html(obj.content);
+                if (typeof (funcList) == 'function') {
+                    funcList(obj);
+                }
+            }
+        });
+    }
+    function funcList(obj) {
+        $(".edit").each(function (e) {
+            $(this).click(function () {
+                var id = $(this).attr("id");
+                var grouptyid = $(this).attr("grouptyid");
+                var group_name = $('.group_name').eq(e).html();
+                //Set data
+                $('#grouptyid').multipleSelect('setSelects', grouptyid.split(','));
+                $('#id').val(id);
+                $('#group_name').val(group_name.trim());
+
+            });
+        });
+    }
+    function refresh() {
+        $(".searchs").val("");
+        $("#grouptyid").multipleSelect("uncheckAll");
+    }
+    function init() {
+        $("#grouptyid").multipleSelect({
+            filter: true,
+            placeholder: 'Select a group type',
+            single: true
+        });
+        $(".searchs").val("");
+        $("#grouptyid").multipleSelect("uncheckAll");
+    }
+</script>

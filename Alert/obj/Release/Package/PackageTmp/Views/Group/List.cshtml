@@ -1,0 +1,20 @@
+﻿@{
+    int i = 0;
+}
+@foreach (var item in ViewBag.groups)
+{
+    <tr class="edit"
+        id="@item.id" grouptyid="@item.grouptyid">
+        <td class="text-center">
+            <input id="@item.id" class="" type="checkbox" value="@item.id" name="keys[]">
+        </td>
+        <td class="text-center">@(i += 1)</td>
+        <td class="group_name">@item.group_name</td>
+        <td class="text-center">
+            <a href="Group/Permission/@item.id">
+                <i class="fa fa-key" aria-hidden="true"></i>
+            </a>
+        </td>
+        <td></td>
+    </tr>
+}

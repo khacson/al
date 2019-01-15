@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alertModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="alert_group" EntityType="alertModel.alert_group" />
+    <EntitySet Name="alert_menu" EntityType="alertModel.alert_menu" />
+    <EntitySet Name="alert_permission" EntityType="alertModel.alert_permission" />
+    <EntitySet Name="alert_subscriber" EntityType="alertModel.alert_subscriber" />
+    <EntitySet Name="alert_user" EntityType="alertModel.alert_user" />
+    <EntitySet Name="alert_config" EntityType="alertModel.alert_config" />
+    <EntitySet Name="alert_applink" EntityType="alertModel.alert_applink" />
+    <EntitySet Name="alert_member" EntityType="alertModel.alert_member" />
+    <EntitySet Name="alert_logfile" EntityType="alertModel.alert_logfile" />
+  </EntityContainer>
+  <EntityType Name="alert_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="grouptyid" Type="Int32" />
+    <Property Name="paramss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="datecreate" Type="DateTime" Precision="3" />
+    <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="dateupdate" Type="DateTime" Precision="3" />
+    <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="isdelete" Type="Byte" />
+  </EntityType>
+  <EntityType Name="alert_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_name" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="route_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="classicon" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="parentid" Type="Int32" />
+    <Property Name="parameter" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ordering" Type="Int32" />
+    <Property Name="isdelete" Type="Byte" />
+  </EntityType>
+  <EntityType Name="alert_permission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menuid" Type="Int32" />
+    <Property Name="permission" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="dateupdate" Type="DateTime" Precision="3" />
+    <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="alert_subscriber">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="member_type" Type="Byte" />
+    <Property Name="member" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="os_type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="longitude" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="latitude" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="datecreate" Type="DateTime" Precision="3" />
+    <Property Name="isdelete" Type="Byte" />
+    <Property Name="ids" Type="Int32" />
+    <Property Name="idkey" Type="Int64" />
+  </EntityType>
+  <EntityType Name="alert_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="isactive" Type="Byte" />
+    <Property Name="avatar" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="groupid" Type="Int32" />
+    <Property Name="datecreate" Type="DateTime" Precision="3" />
+    <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="dateupdate" Type="DateTime" Precision="3" />
+    <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="isdelete" Type="Byte" />
+  </EntityType>
+  <EntityType Name="alert_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="config_name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="config_key" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="config_value" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="datecreate" Type="DateTime" Precision="3" />
+    <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="dateupdate" Type="DateTime" Precision="3" />
+    <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="isdelete" Type="Byte" />
+  </EntityType>
+  <EntityType Name="alert_applink">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="app_name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="app_type" Type="Byte" />
+    <Property Name="app_link" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="datecreate" Type="DateTime" Precision="3" />
+    <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="dateupdate" Type="DateTime" Precision="3" />
+    <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="isdelete" Type="Byte" />
+  </EntityType>
+  <EntityType Name="alert_member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_on_card" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="card_number" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="cvv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="isstatus" Type="Byte" />
+    <Property Name="istrial" Type="Byte" />
+    <Property Name="ischarge" Type="Byte" />
+    <Property Name="accounts" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="datecreate" Type="DateTime" Precision="3" />
+    <Property Name="idkey" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+    <Property Name="isdelete" Type="Byte" />
+    <Property Name="date_create" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="expdate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="profileid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="datecancel" Type="DateTime" Precision="3" />
+    <Property Name="pnref_check" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="authcode_check" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="pnref_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="authcode_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="trxpnref_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="dateactive" Type="DateTime" Precision="3" />
+    <Property Name="pnref_cancel" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="alert_logfile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="logfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

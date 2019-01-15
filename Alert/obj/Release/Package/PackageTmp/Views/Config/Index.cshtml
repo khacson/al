@@ -1,0 +1,360 @@
+﻿@{
+    ViewBag.Title = "Config";
+}
+<style title="" type="text/css">
+    table col.c1 {
+        width: 45px;
+    }
+
+    table col.c2 {
+        width: 45px;
+    }
+
+    table col.c3 {
+        width: 180px;
+    }
+    table col.c4 {
+        width: 180px;
+    }
+    table col.c5 {
+        width: 350px;
+    }
+    table col.c6 {
+        width: auto;
+    }
+    .control-label.col-md-4 {
+        white-space: nowrap;
+    }
+</style>
+<section class="content-header">
+    <!--<h1>
+        Top Navigation
+    </h1>-->
+    <ol class="breadcrumb">
+        <li><a href="Home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Config</a></li>
+    </ol>
+</section>
+<section class="content">
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Search</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <!--S Row 1-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Config name (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="config_name" placeholder="Input config name" id="config_name" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Config key (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="config_key" placeholder="Input config key" id="config_key" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Config value (<span class="red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="text" name="config_value" placeholder="Input config value" id="config_value" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <!--E Row 1-->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div><!--E box-->
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title box-title-found">
+                Found <span id="totals">0</span> results
+            </h3>
+            <div class="box-tools pull-right">
+                <ul class="button-group pull-right btnpermission">
+                    <li id="search">
+                        <button class="button">
+                            <i class="fa fa-search"></i>
+                            Search
+                        </button>
+                    </li>
+                    <li id="refresh">
+                        <button class="button">
+                            <i class="fa fa-refresh"></i>
+                            Refresh
+                        </button>
+                    </li>
+                    <li id="save">
+                        <button class="button">
+                            <i class="fa fa-plus"></i>
+                            Add
+                        </button>
+                    </li>
+                    <li id="edit">
+                        <button class="button">
+                            <i class="fa fa-save"></i>
+                            Edit
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="box-body">
+            <!--E Grid View Data-->
+            <div id="gridviewData">
+                <!--header-->
+                <div id="cHeader">
+                    <div id="tHeader">
+                        <table width="100%" cellspacing="0" border="1" class="table ">
+                            @{
+                                for (var i = 1; i < 7; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" autocomplete="off" /></th>
+                                <th>No.</th>
+                                <th>Config name</th>
+                                <th>Config key</th>
+                                <th>Config value</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end header-->
+                <!--body-->
+                <div id="data">
+                    <div id="gridView">
+                        <table id="group" width="100%" cellspacing="0" border="1">
+                            @{
+                                for (var i = 1; i < 7; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tbody id="gridRows"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--end body-->
+            </div><!--E Grid View Data-->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            &nbsp;
+        </div>
+        <!-- /.box-footer-->
+    </div><!--E box-->
+</section>
+<div class="loading" style="display: none;">
+    <div class="blockUI blockOverlay" style="width: 100%;height: 100%;top:0px;left:0px;position: absolute;background-color: rgb(0,0,0);opacity: 0.1;z-index: 1000;">
+    </div>
+    <div class="blockUI blockMsg blockElement" style="width: 30%;position: absolute;top: 15%;left:35%;text-align: center;">
+        <img src="@Url.Content("~/Content/images/preloader.gif")" style="z-index: 2;position: absolute;" />
+    </div>
+</div>
+<input type="hidden" name="id" id="id" />
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script type="text/javascript">
+    var func = "@Url.Action("getUniqueID")";
+    var funcSave = "@Url.Action("Save")";
+    var cpage = 0;
+    var search = null;
+    var table = "pilot_config";
+    var username = "@ViewBag.username";
+    var config = {
+        apiKey: "@System.Configuration.ConfigurationManager.AppSettings["apiKey"]",
+        authDomain: "@System.Configuration.ConfigurationManager.AppSettings["authDomain"]",
+        databaseURL: "@System.Configuration.ConfigurationManager.AppSettings["databaseURL"]",
+        projectId: "@System.Configuration.ConfigurationManager.AppSettings["projectId"]",
+        storageBucket: "@System.Configuration.ConfigurationManager.AppSettings["storageBucket"]",
+        messagingSenderId: "@System.Configuration.ConfigurationManager.AppSettings["messagingSenderId"]"
+    };
+    firebase.initializeApp(config);
+    $(function () {
+        $('.loading').show();
+        getListSearch();
+        $("#search").click(function () {
+            $('.loading').show();
+            getListSearch();
+        });
+        $("#refresh").click(function () {
+            refresh();
+        });
+        $("#save").click(function () {
+            save();
+        });
+        $("#edit").click(function () {
+            edit();
+        });
+        /*$("#delete").click(function () {
+            deletes();
+        });*/
+        init();
+    });
+    function save() {
+        var arr = getUniqueID();
+        var config_key = $('#config_key').val();
+        var config_value = $('#config_value').val();
+        var config_name = $('#config_name').val();
+        if (config_name == "") {
+            warning("Config name can not be empty"); return false;
+        }
+        if (config_key == "") {
+            warning("Config key can not be empty"); return false;
+        }
+        if (config_value == "") {
+            warning("Config value can not be empty"); return false;
+        }
+        var id = arr.uniqueid;
+
+        firebase.database().ref(table + '/' + config_key).set({
+            id: id,
+            config_name: config_name,
+            config_key: config_key,
+            config_value: config_value,
+            datecreate: arr.timeNow,
+            usercreate: username,
+            isdelete: 0
+        });
+        //Luu data local
+        $.ajax({
+            url: funcSave,
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { config_key: config_key, config_name: config_name, config_value: config_value },
+            success: function (obj) {
+
+            }
+        });
+        success("Add successfully");
+    }
+    function getListSearch() {
+        $("#gridRows").html("");
+        var ref = firebase.database().ref(table).limitToLast(1000);
+        ref = ref.orderByChild('id'); //Sap xep tang
+        var i = 0;
+        ref.on('child_added', function (snapshot) {
+            var message = snapshot.val();
+            var key = snapshot.key;
+            i++;
+            renderData(key, message, i)
+        });
+        /*ref.on('child_changed', function (snapshot) {
+            var message = snapshot.val();
+            var key = snapshot.key;
+            i++;
+            renderData(key, message, i)
+        });*/
+    }
+    function renderData(key, message, i) {
+        if (key != "check_credit_card" && key != "cancel_recurring_payments") {
+            var html = "";
+            html += '<tr class="edit" id="' + key + '" >';
+            html += '<td class="text-center"><input id="' + key + '" class="" type="checkbox" value="' + key + '" name="keys[]"></td>';
+            html += '<td class="text-center">' + i + '</td>';
+            html += '<td id="config_name_' + key + '"  class="config_name">' + message.config_name + '</td>';
+
+            html += '<td id="config_key_' + key + '" class="config_key">' + message.config_key + '</td>';
+            html += '<td id="config_value_' + key + '" class="config_value">' + message.config_value + '</td>';
+            html += '<td></td>';
+            html += '</tr>';
+            $("#gridRows").append(html);
+        }
+        $('.loading').hide();
+    }
+    function edit() {
+        var arr = getUniqueID();
+        var config_key = $('#config_key').val();
+        var config_value = $('#config_value').val();
+        var config_name = $('#config_name').val();
+        if (config_name == "") {
+            warning("Config name can not be empty"); return false;
+        }
+        if (config_key == "") {
+            warning("Config key can not be empty"); return false;
+        }
+        if (config_value == "") {
+            warning("Config value can not be empty"); return false;
+        }
+        var id = $('#id').val();
+        var updates = {};
+        updates[table + "/" + config_key + "/config_key"] = config_key;
+        updates[table + "/" + config_key + "/config_value"] = config_value;
+        updates[table + "/" + config_key + "/config_name"] = config_name;
+        updates[table + "/" + config_key + "/datecreate"] = arr.timeNow;
+        updates[table + "/" + config_key + "/userupdate"] = username;
+        firebase.database().ref().update(updates);
+
+        $("#config_key_" + id).html(config_key);
+        $("#config_value_" + id).html(config_value);
+        $("#config_name_" + id).html(config_name);
+
+        //Luu data local
+        $.ajax({
+            url: funcSave,
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { config_key: config_key, config_name: config_name, config_value: config_value },
+            success: function (obj) {
+
+            }
+        });
+        success("Edit successfully");
+    }
+    function init() {
+        $(document.body).on("click", ".edit", function () {
+            var index = $(".edit").index($(this));
+            var id = $(".edit").eq(index).attr("id");
+            var config_name = $(".config_name").eq(index).html();
+            var config_key = $(".config_key").eq(index).html();
+            var config_value = $(".config_value").eq(index).html();
+            $('#config_name').val(config_name);
+            $('#config_key').val(config_key);
+            $('#config_value').val(config_value);
+            $('#id').val(id);
+        });
+    }
+    function refresh() {
+        $(".searchs").val("");
+    }
+    function getUniqueID() {
+        var arr = [];
+        var id = randomNumberFromRange(100, 1000000000000000000);
+        $.ajax({
+            url: func,
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { uniqueid: id },
+            success: function (obj) {
+                arr.uniqueid = obj.uniqueid;
+                arr.timeNow = obj.timeNow;
+            }
+        });
+        return arr;
+    }
+    function randomNumberFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+</script>

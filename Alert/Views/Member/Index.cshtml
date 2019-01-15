@@ -1,0 +1,552 @@
+﻿@{
+    ViewBag.Title = "Member";
+}
+<style title="" type="text/css">
+    table col.c1 {
+        width: 45px;
+    }
+
+    table col.c2 {
+        width: 45px;
+    }
+
+    table col.c3 {
+        width: 150px;
+    }
+
+    table col.c4 {
+        width: 150px;
+    }
+
+    table col.c5 {
+        width: 150px;
+    }
+
+    table col.c6 {
+        width: 100px;
+    }
+
+    table col.c7 {
+        width: 100px;
+    }
+
+    table col.c8 {
+        width: 130px;
+    }
+
+    table col.c9 {
+        width: 100px;
+    }
+
+    table col.c10 {
+        width: 100px;
+    }
+    table col.c11 {
+        width: 100px;
+    }
+    table col.c12 {
+        width: auto;
+    }
+    .control-label.col-md-4 {
+        white-space: nowrap;
+    }
+</style>
+<section class="content-header">
+    <!--<h1>
+        Top Navigation
+    </h1>-->
+    <ol class="breadcrumb">
+        <li><a href="Home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Member</a></li>
+    </ol>
+</section>
+<section class="content">
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Search</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <!--S Row 1-->
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Name on card</label>
+                        <div class="col-md-8">
+                            <input type="text" name="name_on_card" placeholder="Input name" id="name_on_card" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+          
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Password</label>
+                        <div class="col-md-8">
+                            <input type="text" name="password" placeholder="Input password" id="password" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Country</label>
+                        <div class="col-md-8">
+                            <input type="text" name="country" placeholder="Input country" id="country" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Zip code</label>
+                        <div class="col-md-8">
+                            <input type="text" name="zipcode" placeholder="Input zipcode" id="zipcode" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Status</label>
+                        <div class="col-md-8">
+                            <select name="isdelete" id="isdelete" class="combos tab-event">
+                                <option value=""></option>
+                                <option value="0">Subscribe</option>
+                                <option value="1">Unsubscribe</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Active</label>
+                        <div class="col-md-8">
+                            <select name="isstatus" id="isstatus" class="combos tab-event">
+                                <option value=""></option>
+                                <option value="1">Active</option>
+                                <option value="0">InActive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--E Row 1-->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div><!--E box-->
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title box-title-found">
+                Found <span id="totals">0</span> results
+            </h3>
+            <div class="box-tools pull-right">
+                <ul class="button-group pull-right btnpermission">
+                    <li id="search">
+                        <button class="button">
+                            <i class="fa fa-search"></i>
+                            Search
+                        </button>
+                    </li>
+                    <li id="refresh">
+                        <button class="button">
+                            <i class="fa fa-refresh"></i>
+                            Refresh
+                        </button>
+                    </li>
+                   <!--<li id="edit">
+                        <button class="button">
+                            <i class="fa fa-save"></i>
+                            Edit
+                        </button>
+                    </li>-->
+                    <li id="delete">
+                        <button type="button" class="button">
+                            <i class="fa fa-times"></i>
+                            Delete
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="box-body">
+            <!--E Grid View Data-->
+            <div id="gridviewData">
+                <!--header-->
+                <div id="cHeader">
+                    <div id="tHeader">
+                        <table width="100%" cellspacing="0" border="1" class="table ">
+                            @{
+                                for (var i = 1; i < 13; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" autocomplete="off" /></th>
+                                <th>No.</th>
+                                <th>Name on card</th>
+                                <th>Email</th>
+                                <th>Country</th>
+                                <th>Zip code</th>
+                                <th>Date create</th>
+                                <th>Profile ID</th>
+                                <th>Status</th>
+                                <th>Active</th>
+                                <th>Date cancel</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end header-->
+                <!--body-->
+                <div id="data">
+                    <div id="gridView">
+                        <table id="group" width="100%" cellspacing="0" border="1">
+                            @{
+                                for (var i = 1; i < 13; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tbody id="gridRows"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--end body-->
+            </div><!--E Grid View Data-->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="pagination"></ul>
+            </nav>
+        </div>
+        <!-- /.box-footer-->
+    </div><!--E box-->
+</section>
+<div class="loading" style="display: none;">
+    <div class="blockUI blockOverlay" style="width: 100%;height: 100%;top:0px;left:0px;position: absolute;background-color: rgb(0,0,0);opacity: 0.1;z-index: 1000;">
+    </div>
+    <div class="blockUI blockMsg blockElement" style="width: 30%;position: absolute;top: 15%;left:35%;text-align: center;">
+        <img src="@Url.Content("~/Content/images/preloader.gif")" style="z-index: 2;position: absolute;" />
+    </div>
+</div>
+<input type="hidden" name="id" id="id" />
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.twbsPagination.js")"></script>
+<script type="text/javascript">
+    var func = "@Url.Action("getUniqueID")";
+    var funcGet = "@Url.Action("getList")";
+    var cpage = 0;
+    var search = null;
+    var table = "pilot_member";
+    var username = "@ViewBag.username";
+    var config = {
+        apiKey: "@System.Configuration.ConfigurationManager.AppSettings["apiKey"]",
+        authDomain: "@System.Configuration.ConfigurationManager.AppSettings["authDomain"]",
+        databaseURL: "@System.Configuration.ConfigurationManager.AppSettings["databaseURL"]",
+        projectId: "@System.Configuration.ConfigurationManager.AppSettings["projectId"]",
+        storageBucket: "@System.Configuration.ConfigurationManager.AppSettings["storageBucket"]",
+        messagingSenderId: "@System.Configuration.ConfigurationManager.AppSettings["messagingSenderId"]"
+    };
+    firebase.initializeApp(config);
+    $(function () {
+        $('.loading').show();
+        $("#search").click(function () {
+            $('.loading').show();
+            getListSearch();
+        });
+        $("#refresh").click(function () {
+            refresh();
+        });
+        $("#save").click(function () {
+            save();
+        });
+        $("#edit").click(function () {
+            edit();
+        });
+        $("#delete").click(function () {
+            var id = getCheckedId();
+            var del = confirmDelete(id);
+        });
+        init();
+        getListSearch();
+        //writeUserData();
+    });
+    function writeUserData() {
+        var id = 'binh-nguyen_gmail-com';
+        var email = 'binh.nguyen@gmail.com';
+        firebase.database().ref(table + '/' + id).set({
+            email: email,
+            datecreate: firebase.database.ServerValue.TIMESTAMP,
+            isdelete: 0
+        });
+        var id = 'thinh_hiteknova-com';
+        var email = 'thinh@hiteknova.com';
+        firebase.database().ref(table + '/' + id).set({
+            email: email,
+            datecreate: firebase.database.ServerValue.TIMESTAMP,
+            isdelete: 0
+        });
+    }
+    function getListSearch() {
+
+        /**S Update data sync*/
+        /*var refs = firebase.database().ref(table);
+        refs.on('child_added', function (snapshot) {
+            var message = snapshot.val();
+            var key = snapshot.key;
+            if (typeof message.issync !== 'undefined') { } else {
+                var updates = {};
+                updates[table + "/" + key + "/issync"] = 0;
+                firebase.database().ref().update(updates);
+            }
+        }); */
+        /**E Update data sync*/
+        $("#gridRows").html("");
+        /*var ref = firebase.database().ref(table);
+        ref = ref.orderByChild("issync").equalTo(0);
+        var i = 0;
+        ref.on('child_added', function (snapshot) {
+            var message = snapshot.val();
+            var key = snapshot.key;
+            if (message.issync == 0) {
+                addDataToServer(key, message);
+            }
+        });*/
+       
+        getListDataSearch(funcGet);
+    }
+    function paging(total) {
+        var obj = $('#pagination').twbsPagination({
+            totalPages: total,
+            visiblePages: 5,
+            onPageClick: function (event, page) {
+                if (cpage != page) {
+                    cpage = page;
+                    getListDataSearch(funcGet);
+                }
+            }
+        });
+    }
+    function getListDataSearch(func) {
+        var search = getSearch(); 
+        $(".loading").show();
+        $.ajax({
+            url: funcGet,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { page: cpage, search: search, order: order, index: index },
+            success: function (obj) {
+                $(".loading").hide();
+                $('#totals').html(obj.total);
+                $('#gridRows').html(obj.content);
+                if (typeof (funcList) == 'function') {
+                    funcList(obj);
+                    paging(obj.totalPage);
+                }
+            }
+        });
+    }
+    function funcList(obj) {
+        $(".edit").each(function (e) {
+            $(this).click(function () {
+                var id = $(this).attr("id");
+                var isdelete = $(this).attr("isdelete");
+                var isstatus = $(this).attr("isstatus");
+                var name_on_card = $('.name_on_card').eq(e).html();
+                
+                var datecreate = $('.datecreate').eq(e).html();
+                var email = $('.email').eq(e).html();
+                var country = $('.country').eq(e).html();
+                var zip_code = $('.zip_code').eq(e).html();
+
+                
+                $('#id').val(id);
+                $('#name_on_card').val(name_on_card);
+               
+                $('#email').val(email);
+                $('#country').val(country);
+                $('#zip_code').val(zip_code);
+                $('#isdelete').multipleSelect('setSelects', isdelete.split(','));
+                $('#isstatus').multipleSelect('setSelects', isstatus.split(','));
+            });
+        });
+    }
+    function addDataToServer(key, message) {
+        var isSave = 0;
+        $.ajax({
+            url: 'Member/saveData',
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                idkey: key,
+                country: message.country,
+                credit_card_number: message.credit_card_number,
+                cvv: message.cvv,
+                email: message.email,
+                expdate: message.expdate,
+                isactive: message.isactive,
+                ischarge: message.ischarge,
+                isdelete: message.isdelete,
+                istrial: message.istrial,
+                name_on_card: message.name_on_card,
+                password: message.password,
+                zip_code: message.zipcode,
+                datecreate:  message.datecreate
+            },
+            success: function (obj) {
+                isSave = 1;
+            }
+        });
+        if (isSave == 1) {//Update trang thai da insert
+            var updates = {};
+            updates[table + "/" + key + "/issync"] = 1;
+            firebase.database().ref().update(updates);
+        }
+    }
+    function edit() {
+        var arr = getUniqueID();
+        var isstatus = getCombo("isstatus");
+        var isdelete = getCombo("isstatus");
+        
+        var id = $('#id').val();
+        var updates = {};
+        updates[table + "/" + id + "/isactive"] = parseInt(isstatus);
+        updates[table + "/" + id + "/isdelete"] = parseInt(isdelete);
+        firebase.database().ref().update(updates);
+
+       // $("#config_key_" + id).html(config_key);
+       // $("#config_value_" + id).html(config_value);
+       // $("#config_name_" + id).html(config_name);
+
+        var search = getSearch();
+        var edit = "@Url.Action("edits")";
+        var data = new FormData();
+        data.append('search', search);
+        data.append('id', id);
+        $(".loading").show();
+        $.ajax({
+            url: edit,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function (obj) {
+                $(".loading").hide();
+                if (obj.status == 1) {
+                    success("Edit successfully");
+                    getListSearch(func);
+                }
+                else {
+                    error("Edit Failed");
+                }
+            }
+        });
+        success("Edit successfully");
+    }
+    function init() {
+        $(document.body).on("click", ".edit", function () {
+            var index = $(".edit").index($(this));
+            var id = $(".edit").eq(index).attr("id");
+            var config_name = $(".config_name").eq(index).html();
+            var config_key = $(".config_key").eq(index).html();
+            var config_value = $(".config_value").eq(index).html();
+            $('#config_name').val(config_name);
+            $('#config_key').val(config_key);
+            $('#config_value').val(config_value);
+            $('#id').val(id);
+        });
+        $("#isdelete").multipleSelect({
+            filter: true,
+            placeholder: 'Select a status',
+            single: true
+        });
+        $("#isstatus").multipleSelect({
+            filter: true,
+            placeholder: 'Select a status',
+            single: true
+        });
+    }
+    function refresh() {
+        $(".searchs").val("");
+    }
+    function getUniqueID() {
+        var arr = [];
+        var id = randomNumberFromRange(100, 1000000000000000000);
+        $.ajax({
+            url: func,
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { uniqueid: id },
+            success: function (obj) {
+                arr.uniqueid = obj.uniqueid;
+                arr.timeNow = obj.timeNow;
+            }
+        });
+        return arr;
+    }
+    function randomNumberFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    function confirmDelete(id) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": true,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "0",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        var cf = cfDelete;
+        toastr.warning('<div class="txtconfirmDelete">' + cf + '</div><div class="text-center"><button type="button" onclick="okDelete(' + id + ');" id="okdelete" class="btn btn-danger">' + deletes + '</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">' + cancel + '</button></div>')
+    }
+    function getCheckedKey() {
+        var strId = '';
+        $('#gridView').find('input:checked').each(function () {
+            var email = $(this).attr('email');
+            var idkey = $(this).attr('idkey');
+            idkey = idkey.trim();
+            firebase.database().ref(table+"/" + idkey).remove();
+        });
+    }
+    function okDelete(id) {
+        var idList = getCheckedId();
+        //var id = $('#id').val();
+        var deletes = "@Url.Action("deletes")";
+        var returns = 0;
+        getCheckedKey(); 
+        $.ajax({
+            url: deletes,
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { id: id },
+            success: function (obj) {
+                returns = 1;
+                getListSearch(func);
+            }
+        });
+        return returns;
+    }
+</script>

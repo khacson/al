@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="alertModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alert_applink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="app_name" Type="nchar" MaxLength="100" />
+          <Property Name="app_type" Type="tinyint" />
+          <Property Name="app_link" Type="nchar" MaxLength="150" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="usercreate" Type="nchar" MaxLength="50" />
+          <Property Name="dateupdate" Type="datetime" />
+          <Property Name="userupdate" Type="nchar" MaxLength="50" />
+          <Property Name="isdelete" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="alert_config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="config_name" Type="nchar" MaxLength="100" />
+          <Property Name="config_key" Type="nchar" MaxLength="50" />
+          <Property Name="config_value" Type="nchar" MaxLength="200" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="usercreate" Type="nchar" MaxLength="50" />
+          <Property Name="dateupdate" Type="datetime" />
+          <Property Name="userupdate" Type="nchar" MaxLength="50" />
+          <Property Name="isdelete" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="alert_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_name" Type="nchar" MaxLength="70" />
+          <Property Name="grouptyid" Type="int" />
+          <Property Name="paramss" Type="ntext" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="usercreate" Type="nchar" MaxLength="50" />
+          <Property Name="dateupdate" Type="datetime" />
+          <Property Name="userupdate" Type="nchar" MaxLength="50" />
+          <Property Name="isdelete" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="alert_logfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logfile" Type="text" />
+        </EntityType>
+        <EntityType Name="alert_member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_on_card" Type="nchar" MaxLength="70" />
+          <Property Name="card_number" Type="nchar" MaxLength="30" />
+          <Property Name="cvv" Type="nchar" MaxLength="10" />
+          <Property Name="password" Type="nchar" MaxLength="50" />
+          <Property Name="country" Type="nchar" MaxLength="70" />
+          <Property Name="zip_code" Type="nchar" MaxLength="10" />
+          <Property Name="isstatus" Type="tinyint" />
+          <Property Name="istrial" Type="tinyint" />
+          <Property Name="ischarge" Type="tinyint" />
+          <Property Name="accounts" Type="nchar" MaxLength="50" />
+          <Property Name="email" Type="nchar" MaxLength="70" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="idkey" Type="nchar" MaxLength="70" />
+          <Property Name="isdelete" Type="tinyint" />
+          <Property Name="date_create" Type="nchar" MaxLength="20" />
+          <Property Name="expdate" Type="nchar" MaxLength="10" />
+          <Property Name="profileid" Type="nchar" MaxLength="30" />
+          <Property Name="datecancel" Type="datetime" />
+          <Property Name="pnref_check" Type="nchar" MaxLength="30" />
+          <Property Name="authcode_check" Type="nchar" MaxLength="30" />
+          <Property Name="pnref_profile" Type="nchar" MaxLength="30" />
+          <Property Name="authcode_profile" Type="nchar" MaxLength="30" />
+          <Property Name="trxpnref_profile" Type="nchar" MaxLength="30" />
+          <Property Name="dateactive" Type="datetime" />
+          <Property Name="pnref_cancel" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="alert_menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menu_name" Type="nchar" MaxLength="70" />
+          <Property Name="route_name" Type="nchar" MaxLength="50" />
+          <Property Name="classicon" Type="nchar" MaxLength="50" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="parameter" Type="nchar" MaxLength="100" />
+          <Property Name="ordering" Type="int" />
+          <Property Name="isdelete" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="alert_permission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menuid" Type="int" />
+          <Property Name="permission" Type="nchar" MaxLength="20" />
+          <Property Name="dateupdate" Type="datetime" />
+          <Property Name="userupdate" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="alert_subscriber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="member_type" Type="tinyint" />
+          <Property Name="member" Type="nchar" MaxLength="100" />
+          <Property Name="os_type" Type="nchar" MaxLength="50" />
+          <Property Name="longitude" Type="nchar" MaxLength="20" />
+          <Property Name="latitude" Type="nchar" MaxLength="20" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="isdelete" Type="tinyint" />
+          <Property Name="ids" Type="int" />
+          <Property Name="idkey" Type="bigint" />
+        </EntityType>
+        <EntityType Name="alert_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nchar" MaxLength="50" />
+          <Property Name="fullname" Type="nchar" MaxLength="50" />
+          <Property Name="password" Type="nchar" MaxLength="50" />
+          <Property Name="phone" Type="nchar" MaxLength="30" />
+          <Property Name="email" Type="nchar" MaxLength="70" />
+          <Property Name="isactive" Type="tinyint" />
+          <Property Name="avatar" Type="nchar" MaxLength="200" />
+          <Property Name="groupid" Type="int" />
+          <Property Name="datecreate" Type="datetime" />
+          <Property Name="usercreate" Type="nchar" MaxLength="50" />
+          <Property Name="dateupdate" Type="datetime" />
+          <Property Name="userupdate" Type="nchar" MaxLength="50" />
+          <Property Name="isdelete" Type="tinyint" />
+        </EntityType>
+        <EntityContainer Name="alertModelStoreContainer">
+          <EntitySet Name="alert_applink" EntityType="Self.alert_applink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_config" EntityType="Self.alert_config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_group" EntityType="Self.alert_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_logfile" EntityType="Self.alert_logfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_member" EntityType="Self.alert_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_menu" EntityType="Self.alert_menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_permission" EntityType="Self.alert_permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_subscriber" EntityType="Self.alert_subscriber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_user" EntityType="Self.alert_user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="alertModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alert_group" EntityType="alertModel.alert_group" />
+          <EntitySet Name="alert_menu" EntityType="alertModel.alert_menu" />
+          <EntitySet Name="alert_permission" EntityType="alertModel.alert_permission" />
+          <EntitySet Name="alert_subscriber" EntityType="alertModel.alert_subscriber" />
+          <EntitySet Name="alert_user" EntityType="alertModel.alert_user" />
+          <EntitySet Name="alert_config" EntityType="alertModel.alert_config" />
+          <EntitySet Name="alert_applink" EntityType="alertModel.alert_applink" />
+          <EntitySet Name="alert_member" EntityType="alertModel.alert_member" />
+          <EntitySet Name="alert_logfile" EntityType="alertModel.alert_logfile" />
+          </EntityContainer>
+        <EntityType Name="alert_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="grouptyid" Type="Int32" />
+          <Property Name="paramss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="isdelete" Type="Byte" />
+        </EntityType>
+        <EntityType Name="alert_menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="route_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="classicon" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="parameter" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ordering" Type="Int32" />
+          <Property Name="isdelete" Type="Byte" />
+        </EntityType>
+        <EntityType Name="alert_permission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menuid" Type="Int32" />
+          <Property Name="permission" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="alert_subscriber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="member_type" Type="Byte" />
+          <Property Name="member" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="os_type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="latitude" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="isdelete" Type="Byte" />
+          <Property Name="ids" Type="Int32" />
+          <Property Name="idkey" Type="Int64" />
+        </EntityType>
+        <EntityType Name="alert_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="fullname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="isactive" Type="Byte" />
+          <Property Name="avatar" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="groupid" Type="Int32" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="isdelete" Type="Byte" />
+        </EntityType>
+        <EntityType Name="alert_config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="config_name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="config_key" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="config_value" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="isdelete" Type="Byte" />
+        </EntityType>
+        <EntityType Name="alert_applink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="app_name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="app_type" Type="Byte" />
+          <Property Name="app_link" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="usercreate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="dateupdate" Type="DateTime" Precision="3" />
+          <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="isdelete" Type="Byte" />
+        </EntityType>
+        <EntityType Name="alert_member">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_on_card" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="card_number" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="cvv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="isstatus" Type="Byte" />
+          <Property Name="istrial" Type="Byte" />
+          <Property Name="ischarge" Type="Byte" />
+          <Property Name="accounts" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="datecreate" Type="DateTime" Precision="3" />
+          <Property Name="idkey" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="isdelete" Type="Byte" />
+          <Property Name="date_create" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="expdate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="profileid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="datecancel" Type="DateTime" Precision="3" />
+          <Property Name="pnref_check" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="authcode_check" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="pnref_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="authcode_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="trxpnref_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="dateactive" Type="DateTime" Precision="3" />
+          <Property Name="pnref_cancel" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="alert_logfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="alertModelStoreContainer" CdmEntityContainer="DbEntities">
+          <EntitySetMapping Name="alert_group">
+            <EntityTypeMapping TypeName="alertModel.alert_group">
+              <MappingFragment StoreEntitySet="alert_group">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="dateupdate" ColumnName="dateupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="paramss" ColumnName="paramss" />
+                <ScalarProperty Name="grouptyid" ColumnName="grouptyid" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_menu">
+            <EntityTypeMapping TypeName="alertModel.alert_menu">
+              <MappingFragment StoreEntitySet="alert_menu">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="ordering" ColumnName="ordering" />
+                <ScalarProperty Name="parameter" ColumnName="parameter" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="classicon" ColumnName="classicon" />
+                <ScalarProperty Name="route_name" ColumnName="route_name" />
+                <ScalarProperty Name="menu_name" ColumnName="menu_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_permission">
+            <EntityTypeMapping TypeName="alertModel.alert_permission">
+              <MappingFragment StoreEntitySet="alert_permission">
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="dateupdate" ColumnName="dateupdate" />
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="menuid" ColumnName="menuid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_subscriber">
+            <EntityTypeMapping TypeName="alertModel.alert_subscriber">
+              <MappingFragment StoreEntitySet="alert_subscriber">
+                <ScalarProperty Name="idkey" ColumnName="idkey" />
+                <ScalarProperty Name="ids" ColumnName="ids" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="os_type" ColumnName="os_type" />
+                <ScalarProperty Name="member" ColumnName="member" />
+                <ScalarProperty Name="member_type" ColumnName="member_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_user">
+            <EntityTypeMapping TypeName="alertModel.alert_user">
+              <MappingFragment StoreEntitySet="alert_user">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="dateupdate" ColumnName="dateupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_config">
+            <EntityTypeMapping TypeName="alertModel.alert_config">
+              <MappingFragment StoreEntitySet="alert_config">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="dateupdate" ColumnName="dateupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="config_value" ColumnName="config_value" />
+                <ScalarProperty Name="config_key" ColumnName="config_key" />
+                <ScalarProperty Name="config_name" ColumnName="config_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_applink">
+            <EntityTypeMapping TypeName="alertModel.alert_applink">
+              <MappingFragment StoreEntitySet="alert_applink">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="userupdate" ColumnName="userupdate" />
+                <ScalarProperty Name="dateupdate" ColumnName="dateupdate" />
+                <ScalarProperty Name="usercreate" ColumnName="usercreate" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="app_link" ColumnName="app_link" />
+                <ScalarProperty Name="app_type" ColumnName="app_type" />
+                <ScalarProperty Name="app_name" ColumnName="app_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_member">
+            <EntityTypeMapping TypeName="alertModel.alert_member">
+              <MappingFragment StoreEntitySet="alert_member">
+                <ScalarProperty Name="pnref_cancel" ColumnName="pnref_cancel" />
+                <ScalarProperty Name="dateactive" ColumnName="dateactive" />
+                <ScalarProperty Name="trxpnref_profile" ColumnName="trxpnref_profile" />
+                <ScalarProperty Name="authcode_profile" ColumnName="authcode_profile" />
+                <ScalarProperty Name="pnref_profile" ColumnName="pnref_profile" />
+                <ScalarProperty Name="authcode_check" ColumnName="authcode_check" />
+                <ScalarProperty Name="pnref_check" ColumnName="pnref_check" />
+                <ScalarProperty Name="datecancel" ColumnName="datecancel" />
+                <ScalarProperty Name="profileid" ColumnName="profileid" />
+                <ScalarProperty Name="expdate" ColumnName="expdate" />
+                <ScalarProperty Name="date_create" ColumnName="date_create" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="idkey" ColumnName="idkey" />
+                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="accounts" ColumnName="accounts" />
+                <ScalarProperty Name="ischarge" ColumnName="ischarge" />
+                <ScalarProperty Name="istrial" ColumnName="istrial" />
+                <ScalarProperty Name="isstatus" ColumnName="isstatus" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="cvv" ColumnName="cvv" />
+                <ScalarProperty Name="card_number" ColumnName="card_number" />
+                <ScalarProperty Name="name_on_card" ColumnName="name_on_card" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_logfile">
+            <EntityTypeMapping TypeName="alertModel.alert_logfile">
+              <MappingFragment StoreEntitySet="alert_logfile">
+                <ScalarProperty Name="logfile" ColumnName="logfile" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

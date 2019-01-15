@@ -1,0 +1,43 @@
+﻿@{
+    int i = 0;
+}
+@foreach (var item in ViewBag.datas)
+{
+    string status = "";
+    if (item.isdelete == 0)
+    {
+        status = "Subscribe";
+    }
+    else
+    {
+        status = "Unsubscribe";
+    }
+    string isstatus = "";
+    if (item.isstatus == 0)
+    {
+        isstatus = "InActive";
+    }
+    else
+    {
+        isstatus = "Active";
+    }
+    <tr class="edit"
+        id="@item.id"
+        isdelete="@item.isdelete" isstatus="@item.isstatus">
+        <td class="text-center">
+            <input id="@item.id" idkey="@item.idkey" email="@item.email" class="" type="checkbox" value="@item.id" name="keys[]">
+        </td>
+        <td class="text-center">@(i += 1)</td>
+        <td class="name_on_card">@item.name_on_card</td>
+        <td class="email">@item.email</td>
+        <td class="country">@item.country</td>
+        <td class="zip_code">@item.zip_code</td>
+        <td class="datecreate">@item.datecreate</td>
+        <td class="datecreate">@item.profileid</td>
+        <td class="status">@status</td>
+        <td class="status">@isstatus</td>
+        <td class="datecreate">@item.datecancel</td>
+        <td></td>
+    </tr>
+}
+  

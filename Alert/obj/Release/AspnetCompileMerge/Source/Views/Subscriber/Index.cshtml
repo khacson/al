@@ -1,0 +1,475 @@
+﻿@{
+    ViewBag.Title = "Subscriber List";
+}
+<style title="" type="text/css">
+    table col.c1 {
+        width: 45px;
+    }
+
+    table col.c2 {
+        width: 45px;
+    }
+
+    table col.c3 {
+        width: 90px;
+    }
+
+    table col.c4 {
+        width: 230px;
+    }
+
+    table col.c5 {
+        width: 100px;
+    }
+    table col.c6 {
+        width: 150px;
+    }
+    table col.c7 {
+        width: 150px;
+    }
+    table col.c8 {
+        width: 150px;
+    }
+    table col.c9 {
+        width: 60px;
+    }
+    table col.c10 {
+        width: auto;
+    }
+    .control-label.col-md-4 {
+        white-space: nowrap;
+    }
+    .modal-dialog {
+        margin: 30px auto;
+        width: 900px;
+        height: 450px;
+    }
+    .modal-body {
+        position: relative !important;
+        padding: 0;
+        width: 900px;
+        height: 450px;
+    }
+    #map {
+        height: 450px;
+        width: 900px;
+        
+    }
+</style>
+<section class="content-header">
+    <!--<h1>
+        Top Navigation
+    </h1>-->
+    <ol class="breadcrumb">
+        <li><a href="Home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Subscriber List</a></li>
+    </ol>
+</section>
+<section class="content">
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Search</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <!--S Row 1-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Member type</label>
+                        <div class="col-md-8">
+                            <select class="combos" name="membertype" id="membertype">
+                                <option value=""></option>
+                                <option value="0">Guest</option>
+                                <option value="1">Member</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Member</label>
+                        <div class="col-md-8">
+                            <input type="text" name="memberid" placeholder="Input member" id="memberid" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">OS type</label>
+                        <div class="col-md-8">
+                            <select class="combos" name="ostype" id="ostype">
+                                <option value=""></option>
+                                <option value="IOS">iOS</option>
+                                <option value="Android">Android</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--E Row 1-->
+                <!--S Row 2-->
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Longitude</label>
+                        <div class="col-md-8">
+                            <input type="text" name="longitude" placeholder="Input longitude" id="longitude" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Latitude</label>
+                        <div class="col-md-8">
+                            <input type="text" name="latitude" placeholder="Input latitude" id="longitude" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Date</label>
+                        <div class="col-md-8">
+                            <input type="text" name="datecreate" placeholder="Input date" id="datecreate" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <!--E Row 2-->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div><!--E box-->
+    <!--S box-->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title box-title-found">
+                Found <span id="totals">0</span> results
+            </h3>
+            <div class="box-tools pull-right">
+                <ul class="button-group pull-right btnpermission">
+                    <li id="search">
+                        <button class="button">
+                            <i class="fa fa-search"></i>
+                            Search
+                        </button>
+                    </li>
+                    <li id="refresh">
+                        <button class="button">
+                            <i class="fa fa-refresh"></i>
+                            Refresh
+                        </button>
+                    </li>
+                    <li id="delete">
+                        <button class="button">
+                            <i class="fa fa-save"></i>
+                            Delete
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+       </div>
+        <div class="box-body">
+            <!--E Grid View Data-->
+            <div id="gridviewData">
+                <!--header-->
+                <div id="cHeader">
+                    <div id="tHeader">
+                        <table width="100%" cellspacing="0" border="1" class="table ">
+                            @{
+                                for (var i = 1; i < 11; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" autocomplete="off" /></th>
+                                <th>No.</th>
+                                <th>Member type</th>
+                                <th>Member</th>
+                                <th>OS type</th>
+                                <th>Longitude</th>
+                                <th>Latitude</th>
+                                <th>Date</th>
+                                <th>View</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end header-->
+                <!--body-->
+                <div id="data">
+                    <div id="gridView">
+                        <table id="group" width="100%" cellspacing="0" border="1">
+                            @{
+                                for (var i = 1; i < 11; i++)
+                                {
+                                    <col class="c@{@i}">
+                                }
+                            }
+                            <tbody id="gridRows"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--end body-->
+            </div><!--E Grid View Data-->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            &nbsp;
+        </div>
+        <!-- /.box-footer-->
+    </div><!--E box-->
+</section>
+<div class="loading" style="display: none;">
+    <div class="blockUI blockOverlay" style="width: 100%;height: 100%;top:0px;left:0px;position: absolute;background-color: rgb(0,0,0);opacity: 0.1;z-index: 1000;">
+    </div>
+    <div class="blockUI blockMsg blockElement" style="width: 30%;position: absolute;top: 15%;left:35%;text-align: center;">
+        <img src="@Url.Content("~/Content/images/preloader.gif")" style="z-index: 2;position: absolute;" />
+    </div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div id="map"></div>
+    </div>
+</div>
+<input type="hidden" name="id" id="id" />
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCY3rbIwLNXjoFNys3lmJ2cytFaJD5Khk">
+</script>
+<script type="text/javascript">
+    var func = "@Url.Action("getUniqueID")";
+    var cpage = 0;
+    var search = null;
+    var table = "pilot_location";
+    var username = "@ViewBag.username";
+    var lats = 10.888100;
+    var lngs = 106.721297;
+    var idMax = 0;
+    var idMin = 0;
+    var limitPage = 20;
+
+    $(function () {
+        firebase.initializeApp(config);
+        $('.loading').show();
+        getListSearch();
+        $("#search").click(function () {
+            $('.loading').show();
+            getListSearch();
+        });
+        $("#refresh").click(function () {
+            refresh();
+        });
+        $("#delete").click(function () {
+            deletes();
+        });
+        init();
+    });
+    function getListSearch() {
+        //Lay gia tri max id
+        var max = firebase.database().ref(table);
+        max = max.orderByKey();
+        max = max.limitToLast(1); console.log(max);
+        max.on('value', function (snapshot) {
+            idMax = snapshot.key;
+            console.log(idMax);
+        });
+        console.log(idMax);
+
+        $("#gridRows").html("");
+        var ref = firebase.database().ref(table);
+        ref = ref.orderByKey();
+        //ref = ref.orderByChild('id'); //Sap xep tang
+        //ref = ref.startAt(1);
+        //ref = ref.endAt(2);
+        ref = ref.limitToLast(20);
+        var i = 0;
+        ref.on('child_added', function (snapshot) {
+            var message = snapshot.val();
+            //var length = snapshot.length(); console.log(length);
+            var key = snapshot.key;
+            i++;
+            renderData(key, message,i)
+        });
+    }
+    /*function getLastKey(obj) {
+        var key;
+        if (obj) {
+            each(obj, function (v, k) {
+                key = k;
+            });
+        }
+        return key;
+    }
+    function getFirstKey(obj) {
+        var key;
+        if (obj) {
+            each(obj, function (v, k) {
+                key = k;
+                return true;
+            });
+        }
+        return key;
+    }*/
+    function renderData(key, message, i) {
+        var memberType = "";
+        var membertypeid = '';
+        if (typeof (message.membertype) != "undefined" && message.membertype !== null) {
+            if (parseInt(message.membertype) == 0) {
+                memberType = 'Guest';
+                membertypeid = 0;
+            }
+            else if (parseInt(message.membertype) > 0) {
+                memberType = 'Member';
+                membertypeid = message.membertype;
+            }
+        }
+        var html = "";
+        html += '<tr class="edit" id="' + key + '" membertypeid="' + membertypeid + '">';
+        html += '<td class="text-center"><input id="' + key + '" class="" type="checkbox" value="' + key + '" name="keys[]"></td>';
+        html += '<td class="text-center">' + i + '</td>';
+        html += '<td>' + memberType + '</td>';
+        html += '<td class="">'+message.memberid+'</td>';
+        html += '<td class="ostype">' + message.ostype + '</td>';
+        html += '<td class="longitude">' + message.longitude + '</td>';
+        html += '<td class="latitude">' + message.latitude + '</td>';
+        html += '<td class="datecreate text-center">' + message.datecreate + '</td>';
+        html += '<td class="text-center"><a class="btn btn-info btn-sm viewmap" longitude="' + message.longitude + '" latitude="' + message.latitude + '" data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-location-arrow" aria-hidden="true"></i></a></td>';
+        html += '<td></td>';
+        html += '</tr>';
+        $("#gridRows").append(html);
+        $('.loading').hide();
+    }
+    function deletes() {
+        var arr = getUniqueID();
+        var config_key = $('#config_key').val();
+        var config_value = $('#config_value').val();
+        var config_name = $('#config_name').val();
+        if (config_name == "") {
+            warning("Config name can not be empty"); return false;
+        }
+        if (config_key == "") {
+            warning("Config key can not be empty"); return false;
+        }
+        if (config_value == "") {
+            warning("Config value can not be empty"); return false;
+        }
+        var id = $('#id').val();
+        var updates = {};
+        updates[table + "/" + config_key + "/config_key"] = config_key;
+        updates[table + "/" + config_key + "/config_value"] = config_value;
+        updates[table + "/" + config_key + "/config_name"] = config_name;
+        updates[table + "/" + config_key + "/datecreate"] = arr.timeNow;
+        updates[table + "/" + config_key + "/userupdate"] = username;
+        firebase.database().ref().update(updates);
+
+        $("#config_key_" + id).html(config_key);
+        $("#config_value_" + id).html(config_value);
+        $("#config_name_" + id).html(config_name);
+
+        success("Edit successfully");
+    }
+    function init() {
+        $(document.body).on("click", ".edit", function () {
+            var index = $(".edit").index($(this));
+            var id = $(".edit").eq(index).attr("id");
+            var config_name = $(".config_name").eq(index).html();
+            var config_key = $(".config_key").eq(index).html();
+            var config_value = $(".config_value").eq(index).html();
+            $('#config_name').val(config_name);
+            $('#config_key').val(config_key);
+            $('#config_value').val(config_value);
+            $('#id').val(id);
+        });
+        //View Map
+       
+        $(document.body).on("click", ".viewmap", function () {
+            var index = $(".viewmap").index($(this));
+            var latitude = parseFloat($(this).attr("latitude"));
+            var longitude = parseFloat($(this).attr("longitude"));
+            var viewMap = "@Url.Action("viewMap")";
+
+            /*$.ajax({
+                url: viewMap,
+                async: false,
+                type: 'POST',
+                dataType: 'JSON',
+                data: { latitude: latitude, longitude: longitude },
+                success: function (obj) {
+                    $('.modal-body').html(obj.content);
+                    $('.modal-body').show();
+                }
+            });*/
+            initMap(latitude, longitude);
+        });
+        $("#membertype").multipleSelect({
+            filter: true,
+            placeholder: 'Select a member type',
+            single: true
+        });
+        $("#ostype").multipleSelect({
+            filter: true,
+            placeholder: 'Select a os type',
+            single: true
+        });
+        $("#myModal").on("shown.bs.modal", function () {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(latlng);
+        });
+    }
+    function refresh() {
+        $(".searchs").val("");
+    }
+    function getUniqueID() {
+        var arr = [];
+        var id = randomNumberFromRange(100, 1000000000000000000);
+        $.ajax({
+            url: func,
+            async: false,
+            type: 'POST',
+            dataType: 'JSON',
+            data: { uniqueid: id },
+            success: function (obj) {
+                arr.uniqueid = obj.uniqueid;
+                arr.timeNow = obj.timeNow;
+            }
+        });
+        return arr;
+    }
+    function randomNumberFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    function initMap(lats, lngs) {
+        var myLatlng = { lat: lats, lng: lngs };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: myLatlng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Click to zoom'
+        });
+
+        map.addListener('center_changed', function () {
+            // 3 seconds after the center of the map has changed, pan back to the
+            // marker.
+            window.setTimeout(function () {
+                map.panTo(marker.getPosition());
+            }, 3000);
+        });
+
+        marker.addListener('click', function () {
+            map.setZoom(18);
+            map.setCenter(marker.getPosition());
+        });
+    }
+</script>

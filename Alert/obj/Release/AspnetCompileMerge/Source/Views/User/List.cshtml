@@ -1,0 +1,24 @@
+﻿@{
+    int i = 0;
+}
+@foreach (var item in ViewBag.users)
+{
+    <tr class="edit"
+        id="@item.id" isactive="@item.isactive" groupid="@item.groupid">
+        <td class="text-center">
+            <input id="@item.id" class="" type="checkbox" value="@item.id" name="keys[]">
+        </td>
+        <td class="text-center">@(i += 1)</td>
+        <td class="username">@item.username</td>
+        <td class="fullname">@item.fullname</td>
+        <td class="email">@item.email</td>
+        <td class="phone">@item.phone</td>
+        <td></td>
+        <td></td>
+        <td class="text-center">
+            <img class="avatar" src="@Url.Content("~/Content/images/")@item.avatar" styl style=" height: 39px;
+    margin-top: 5px;" />
+        </td>
+        <td></td>
+    </tr>
+}

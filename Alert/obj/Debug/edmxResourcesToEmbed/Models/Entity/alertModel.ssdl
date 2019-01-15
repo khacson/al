@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="alertModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alert_applink">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="app_name" Type="nchar" MaxLength="100" />
+    <Property Name="app_type" Type="tinyint" />
+    <Property Name="app_link" Type="nchar" MaxLength="150" />
+    <Property Name="datecreate" Type="datetime" />
+    <Property Name="usercreate" Type="nchar" MaxLength="50" />
+    <Property Name="dateupdate" Type="datetime" />
+    <Property Name="userupdate" Type="nchar" MaxLength="50" />
+    <Property Name="isdelete" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="alert_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="config_name" Type="nchar" MaxLength="100" />
+    <Property Name="config_key" Type="nchar" MaxLength="50" />
+    <Property Name="config_value" Type="nchar" MaxLength="200" />
+    <Property Name="datecreate" Type="datetime" />
+    <Property Name="usercreate" Type="nchar" MaxLength="50" />
+    <Property Name="dateupdate" Type="datetime" />
+    <Property Name="userupdate" Type="nchar" MaxLength="50" />
+    <Property Name="isdelete" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="alert_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="group_name" Type="nchar" MaxLength="70" />
+    <Property Name="grouptyid" Type="int" />
+    <Property Name="paramss" Type="ntext" />
+    <Property Name="datecreate" Type="datetime" />
+    <Property Name="usercreate" Type="nchar" MaxLength="50" />
+    <Property Name="dateupdate" Type="datetime" />
+    <Property Name="userupdate" Type="nchar" MaxLength="50" />
+    <Property Name="isdelete" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="alert_logfile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="logfile" Type="text" />
+  </EntityType>
+  <EntityType Name="alert_member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_on_card" Type="nchar" MaxLength="70" />
+    <Property Name="card_number" Type="nchar" MaxLength="30" />
+    <Property Name="cvv" Type="nchar" MaxLength="10" />
+    <Property Name="password" Type="nchar" MaxLength="50" />
+    <Property Name="country" Type="nchar" MaxLength="70" />
+    <Property Name="zip_code" Type="nchar" MaxLength="10" />
+    <Property Name="isstatus" Type="tinyint" />
+    <Property Name="istrial" Type="tinyint" />
+    <Property Name="ischarge" Type="tinyint" />
+    <Property Name="accounts" Type="nchar" MaxLength="50" />
+    <Property Name="email" Type="nchar" MaxLength="70" />
+    <Property Name="datecreate" Type="datetime" />
+    <Property Name="idkey" Type="nchar" MaxLength="70" />
+    <Property Name="isdelete" Type="tinyint" />
+    <Property Name="date_create" Type="nchar" MaxLength="20" />
+    <Property Name="expdate" Type="nchar" MaxLength="10" />
+    <Property Name="profileid" Type="nchar" MaxLength="30" />
+    <Property Name="datecancel" Type="datetime" />
+    <Property Name="pnref_check" Type="nchar" MaxLength="30" />
+    <Property Name="authcode_check" Type="nchar" MaxLength="30" />
+    <Property Name="pnref_profile" Type="nchar" MaxLength="30" />
+    <Property Name="authcode_profile" Type="nchar" MaxLength="30" />
+    <Property Name="trxpnref_profile" Type="nchar" MaxLength="30" />
+    <Property Name="dateactive" Type="datetime" />
+    <Property Name="pnref_cancel" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="alert_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menu_name" Type="nchar" MaxLength="70" />
+    <Property Name="route_name" Type="nchar" MaxLength="50" />
+    <Property Name="classicon" Type="nchar" MaxLength="50" />
+    <Property Name="parentid" Type="int" />
+    <Property Name="parameter" Type="nchar" MaxLength="100" />
+    <Property Name="ordering" Type="int" />
+    <Property Name="isdelete" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="alert_permission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menuid" Type="int" />
+    <Property Name="permission" Type="nchar" MaxLength="20" />
+    <Property Name="dateupdate" Type="datetime" />
+    <Property Name="userupdate" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="alert_subscriber">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="member_type" Type="tinyint" />
+    <Property Name="member" Type="nchar" MaxLength="100" />
+    <Property Name="os_type" Type="nchar" MaxLength="50" />
+    <Property Name="longitude" Type="nchar" MaxLength="20" />
+    <Property Name="latitude" Type="nchar" MaxLength="20" />
+    <Property Name="datecreate" Type="datetime" />
+    <Property Name="isdelete" Type="tinyint" />
+    <Property Name="ids" Type="int" />
+    <Property Name="idkey" Type="bigint" />
+  </EntityType>
+  <EntityType Name="alert_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nchar" MaxLength="50" />
+    <Property Name="fullname" Type="nchar" MaxLength="50" />
+    <Property Name="password" Type="nchar" MaxLength="50" />
+    <Property Name="phone" Type="nchar" MaxLength="30" />
+    <Property Name="email" Type="nchar" MaxLength="70" />
+    <Property Name="isactive" Type="tinyint" />
+    <Property Name="avatar" Type="nchar" MaxLength="200" />
+    <Property Name="groupid" Type="int" />
+    <Property Name="datecreate" Type="datetime" />
+    <Property Name="usercreate" Type="nchar" MaxLength="50" />
+    <Property Name="dateupdate" Type="datetime" />
+    <Property Name="userupdate" Type="nchar" MaxLength="50" />
+    <Property Name="isdelete" Type="tinyint" />
+  </EntityType>
+  <EntityContainer Name="alertModelStoreContainer">
+    <EntitySet Name="alert_applink" EntityType="Self.alert_applink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_config" EntityType="Self.alert_config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_group" EntityType="Self.alert_group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_logfile" EntityType="Self.alert_logfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_member" EntityType="Self.alert_member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_menu" EntityType="Self.alert_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_permission" EntityType="Self.alert_permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_subscriber" EntityType="Self.alert_subscriber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_user" EntityType="Self.alert_user" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
