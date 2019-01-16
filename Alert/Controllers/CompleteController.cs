@@ -50,6 +50,31 @@ namespace Alert.Controllers
             ViewBag.name = obj.name_on_card;
             return View("Success");
         }
+        public ActionResult AccountWeb()
+        {
+            string idkey = this.Request.QueryString["key"].Trim();
+            //int id = Convert.ToInt32(idkey);
+            var db = DBcontext.Context;
+            var obj = db.alert_member.Where(s => s.email == idkey).FirstOrDefault<alert_member>();
+            if (obj == null)
+            {
+                ViewBag.name = "";
+                return View("Error");
+            }
+            else
+            {
+                //Tim thay
+                var objs = db.alert_member.Where(s => s.id == obj.id).FirstOrDefault<alert_member>();
+                objs.isstatus = 2;
+                objs.dateactive = DateTime.Now; 
+                db.Entry(objs).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.name = obj.lastname + " " + obj.firstname;
+                return View("Activate");
+            }
+            ViewBag.name = obj.firstname;
+            return View("Success");
+        }
         public string createProflie(int id, string pnref_check, string fullname)
         {
             string apiEndPointAPITest = ConfigurationManager.AppSettings.Get("apiEndPointAPITest");

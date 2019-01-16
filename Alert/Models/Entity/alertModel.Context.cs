@@ -32,7 +32,9 @@ namespace Alert.Models.Entity
         public virtual DbSet<alert_user> alert_user { get; set; }
         public virtual DbSet<alert_config> alert_config { get; set; }
         public virtual DbSet<alert_applink> alert_applink { get; set; }
-        public virtual DbSet<alert_member> alert_member { get; set; }
         public virtual DbSet<alert_logfile> alert_logfile { get; set; }
+        public virtual DbSet<alert_country> alert_country { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<alert_member> alert_member { get; set; }
     }
 }

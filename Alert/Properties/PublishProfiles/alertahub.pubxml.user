@@ -6,11 +6,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Son Nguyen\Desktop\Build</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\sonnguyen\Desktop\alert</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Alert.dll">
-      <publishTime>12/04/2018 09:55:39</publishTime>
+      <publishTime>03/09/2018 09:22:46</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/28/2017 12:46:16</publishTime>
@@ -331,7 +331,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/28/2017 12:46:09</publishTime>
     </File>
     <File Include="Models/Entity/alertModel.edmx.diagram">
-      <publishTime>07/04/2017 12:38:35</publishTime>
+      <publishTime>02/27/2018 15:59:14</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>02/28/2017 16:16:44</publishTime>
@@ -373,7 +373,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/28/2017 12:46:11</publishTime>
     </File>
     <File Include="Scripts/main.js">
-      <publishTime>05/19/2017 16:10:08</publishTime>
+      <publishTime>02/07/2018 08:28:37</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>02/28/2017 12:46:11</publishTime>
@@ -721,7 +721,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/06/2017 12:43:40</publishTime>
     </File>
     <File Include="Views/Authorize/Index.cshtml">
-      <publishTime>07/07/2017 11:20:30</publishTime>
+      <publishTime>03/08/2018 09:28:09</publishTime>
     </File>
     <File Include="Views/Complete/Activate.cshtml">
       <publishTime>06/08/2017 14:22:50</publishTime>
@@ -760,10 +760,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2017 18:12:49</publishTime>
     </File>
     <File Include="Views/Member/Index.cshtml">
-      <publishTime>06/08/2017 14:09:08</publishTime>
+      <publishTime>03/09/2018 09:21:20</publishTime>
     </File>
     <File Include="Views/Member/List.cshtml">
-      <publishTime>06/07/2017 17:30:37</publishTime>
+      <publishTime>02/27/2018 16:31:07</publishTime>
     </File>
     <File Include="Views/Paypal/Index.cshtml">
       <publishTime>03/10/2017 13:23:11</publishTime>
@@ -814,7 +814,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/28/2017 12:46:12</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/04/2018 09:57:57</publishTime>
+      <publishTime>02/08/2018 10:21:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

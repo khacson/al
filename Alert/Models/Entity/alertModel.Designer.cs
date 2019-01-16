@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\MVC\Alert\Alert\Models\Entity\alertModel.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\MVC\Alert\Alert\Models\Entity\alertModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

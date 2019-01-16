@@ -28,6 +28,14 @@
     <Property Name="userupdate" Type="nchar" MaxLength="50" />
     <Property Name="isdelete" Type="tinyint" />
   </EntityType>
+  <EntityType Name="alert_country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country_code" Type="char" MaxLength="20" />
+    <Property Name="country_name" Type="char" MaxLength="70" />
+  </EntityType>
   <EntityType Name="alert_group">
     <Key>
       <PropertyRef Name="id" />
@@ -79,6 +87,16 @@
     <Property Name="trxpnref_profile" Type="nchar" MaxLength="30" />
     <Property Name="dateactive" Type="datetime" />
     <Property Name="pnref_cancel" Type="nchar" MaxLength="30" />
+    <Property Name="firstname" Type="nchar" MaxLength="30" />
+    <Property Name="lastname" Type="nchar" MaxLength="30" />
+    <Property Name="phonenumber" Type="nchar" MaxLength="30" />
+    <Property Name="payment_method" Type="nchar" MaxLength="50" />
+    <Property Name="expiredays" Type="date" />
+    <Property Name="acount_type" Type="tinyint" />
+    <Property Name="money" Type="nchar" MaxLength="10" />
+    <Property Name="paidfull" Type="tinyint" />
+    <Property Name="money_order" Type="nchar" MaxLength="30" />
+    <Property Name="customer_number" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="alert_menu">
     <Key>
@@ -137,9 +155,20 @@
     <Property Name="userupdate" Type="nchar" MaxLength="50" />
     <Property Name="isdelete" Type="tinyint" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityContainer Name="alertModelStoreContainer">
     <EntitySet Name="alert_applink" EntityType="Self.alert_applink" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alert_config" EntityType="Self.alert_config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alert_country" EntityType="Self.alert_country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alert_group" EntityType="Self.alert_group" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alert_logfile" EntityType="Self.alert_logfile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alert_member" EntityType="Self.alert_member" Schema="dbo" store:Type="Tables" />
@@ -147,5 +176,6 @@
     <EntitySet Name="alert_permission" EntityType="Self.alert_permission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alert_subscriber" EntityType="Self.alert_subscriber" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="alert_user" EntityType="Self.alert_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

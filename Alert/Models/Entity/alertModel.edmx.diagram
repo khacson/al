@@ -12,8 +12,10 @@
         <EntityTypeShape EntityType="alertModel.alert_user" Width="1.5" PointX="2.125" PointY="0.5" />
         <EntityTypeShape EntityType="alertModel.alert_config" Width="1.5" PointX="5.375" PointY="0.5" />
         <EntityTypeShape EntityType="alertModel.alert_applink" Width="1.5" PointX="7" PointY="0.5" />
-        <EntityTypeShape EntityType="alertModel.alert_member" Width="1.5" PointX="3.75" PointY="0.5" />
-        <EntityTypeShape EntityType="alertModel.alert_logfile" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="alertModel.alert_logfile" Width="1.5" PointX="2.125" PointY="4.375" />
+        <EntityTypeShape EntityType="alertModel.alert_country" Width="1.5" PointX="3.75" PointY="0.5" />
+        <EntityTypeShape EntityType="alertModel.sysdiagram" Width="1.5" PointX="3.75" PointY="2.25" />
+        <EntityTypeShape EntityType="alertModel.alert_member" Width="1.5" PointX="0.5" PointY="3.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

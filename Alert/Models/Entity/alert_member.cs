@@ -40,5 +40,15 @@ namespace Alert.Models.Entity
         public string trxpnref_profile { get; set; }
         public Nullable<System.DateTime> dateactive { get; set; }
         public string pnref_cancel { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string phonenumber { get; set; }
+        public string payment_method { get; set; }
+        public Nullable<System.DateTime> expiredays { get; set; }
+        public Nullable<byte> acount_type { get; set; }
+        public string money { get; set; }
+        public Nullable<byte> paidfull { get; set; }
+        public string money_order { get; set; }
+        public string customer_number { get; set; }
     }
 }

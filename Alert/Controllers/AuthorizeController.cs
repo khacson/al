@@ -17,16 +17,21 @@ namespace Alert.Controllers
         public ActionResult Index()
         {
 
+            var applink = ApplinkModel.getList();
+            ViewBag.datas = applink;
+            int counts = 1;
+            if (applink == null)
+            {
+                counts = 0;
+            }
+            ViewBag.counts = counts;
             var login = Session[baseContanst.user_Login];
             if (login == null)
             {
-                var applink = ApplinkModel.getList();
-                ViewBag.datas = applink;
                 return View();
             }
             else
             {
-                //return Content("<script>window.location = 'home';</script>");
                 return RedirectToAction("Index", "Home");
             }
            

@@ -21,6 +21,7 @@ namespace Alert.Models
         public class responseData
         {
             public int status { set; get; }
+            public string password { set; get; }
             public string msg { set; get; }
             public string statusSendMail { set; get; }
         }
@@ -77,6 +78,16 @@ namespace Alert.Models
             public string trxpnref_profile;
             public string dateactive;
             public string pnref_cancel;
+            public string firstname;
+            public string lastname;
+            public string phonenumber;
+            public string payment_method;
+            public string expiredays;
+            public string money;
+            public int acount_type;
+            public string expired;
+            public string money_order;
+            public string customer_number;
         }
         public class insertFirebaseCancel
         {

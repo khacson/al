@@ -25,5 +25,6 @@ namespace Alert.Models.NoneObject
         public string idkey { set; get; }
         public byte? isdelete { get; set; }
         public string date_create { set; get; }
+
     }
 }

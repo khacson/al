@@ -6,15 +6,15 @@
     <div class="row mtop50">
         <div class="col-md-5 col-md-offset-3">
             <div class="row">
-                @foreach (var item in ViewBag.datas)
-                {
-                    <div class="col-md-6 text-center">
-                        <a href="@item.app_link" target="_blank">
-                            <img style="width:80%; margin-bottom:20px;" src="@Url.Content("~/Content/images/" + @item.app_type + ".png")" />
-                        </a>
-                    </div>
+                     @foreach (var item in ViewBag.datas)
+                    {
+                        <div class="col-md-6 text-center">
+                            <a href="@item.app_link" target="_blank">
+                                <img style="width:80%; margin-bottom:20px;" src="@Url.Content("~/Content/images/" + @item.app_type + ".png")" />
+                            </a>
+                        </div>
 
-                }
+                    }
             </div>
             <div class="panel panel-default panel-login">
                 <div class="panel-heading login-heading">

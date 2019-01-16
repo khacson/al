@@ -5,46 +5,55 @@
     table col.c1 {
         width: 45px;
     }
-
     table col.c2 {
         width: 45px;
     }
-
     table col.c3 {
-        width: 150px;
+        width: 100px;
     }
-
     table col.c4 {
-        width: 150px;
+        width: 100px;
     }
-
     table col.c5 {
-        width: 150px;
+        width: 100px;
     }
-
     table col.c6 {
-        width: 100px;
+        width: 180px;
     }
-
     table col.c7 {
-        width: 100px;
+        width: 110px;
     }
-
     table col.c8 {
-        width: 130px;
+        width: 120px;
     }
-
     table col.c9 {
         width: 100px;
     }
-
     table col.c10 {
         width: 100px;
     }
     table col.c11 {
-        width: 100px;
+        width: 150px;
     }
     table col.c12 {
+        width: 130px;
+    }
+    table col.c13 {
+        width: 70px;
+    }
+    table col.c14 {
+        width: 100px;
+    }
+    table col.c15 {
+        width: 110px;
+    }
+    table col.c16 {
+        width: 150px;
+    }
+    table col.c17 {
+        width: 150px;
+    }
+    table col.c18 {
         width: auto;
     }
     .control-label.col-md-4 {
@@ -74,68 +83,138 @@
         <div class="box-body">
             <div class="row">
                 <!--S Row 1-->
-                <div class="col-md-4 mtop10">
+            <div class="row">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">Name on card</label>
+                        <label class="control-label col-md-4">Fist name </label>
                         <div class="col-md-8">
-                            <input type="text" name="name_on_card" placeholder="Input name" id="name_on_card" class="searchs form-control tab-event" />
+                            <input type="text" name="firstname" placeholder="Input first name" id="firstname" class="searchs form-control tab-event" />
                         </div>
                     </div>
                 </div>
-          
-                <div class="col-md-4 mtop10">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">Password</label>
+                        <label class="control-label col-md-4" style="padding-left:5px;">Last name </label>
                         <div class="col-md-8">
-                            <input type="text" name="password" placeholder="Input password" id="password" class="searchs form-control tab-event" />
+                            <input type="text" name="lastname" placeholder="Input last name" id="lastname" class="searchs form-control tab-event" />
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mtop10">
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label col-md-4">Country</label>
+                        <label class="control-label col-md-4">Email  (<span style="color:red">*</span>)</label>
                         <div class="col-md-8">
-                            <input type="text" name="country" placeholder="Input country" id="country" class="searchs form-control tab-event" />
+                            <input type="text" name="email" placeholder="Input email" id="email" class="searchs form-control tab-event" />
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mtop10">
-                    <div class="form-group">
-                        <label class="control-label col-md-4">Zip code</label>
-                        <div class="col-md-8">
-                            <input type="text" name="zipcode" placeholder="Input zipcode" id="zipcode" class="searchs form-control tab-event" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mtop10">
-                    <div class="form-group">
-                        <label class="control-label col-md-4">Status</label>
-                        <div class="col-md-8">
-                            <select name="isdelete" id="isdelete" class="combos tab-event">
-                                <option value=""></option>
-                                <option value="0">Subscribe</option>
-                                <option value="1">Unsubscribe</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mtop10">
-                    <div class="form-group">
-                        <label class="control-label col-md-4">Active</label>
-                        <div class="col-md-8">
-                            <select name="isstatus" id="isstatus" class="combos tab-event">
-                                <option value=""></option>
-                                <option value="1">Active</option>
-                                <option value="0">InActive</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!--E Row 1-->
             </div>
-        </div>
-        <!-- /.box-body -->
-    </div><!--E box-->
+            <!--S Row 2-->
+            <div class="row">
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Password  (<span style="color:red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="password" name="password" placeholder="Input password" id="password" class="searchs form-control tab-event" />
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4" style="padding-left:5px;">Confirm password  (<span style="color:red">*</span>)</label>
+                        <div class="col-md-8">
+                            <input type="password" name="cfpassword" placeholder="Input password" id="cfpassword" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Phone number</label>
+                        <div class="col-md-8">
+                            <input type="text" name="phonenumber" placeholder="Input phone number" id="phonenumber" class="searchs form-control tab-event" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--S Row 4-->
+            <div class="row">
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Payment method  (<span style="color:red">*</span>)</label>
+                        <div class="col-md-8">
+                            <select name="payment_method" id="payment_method" class="combos tab-event">
+                                <option value=""></option>
+                                <option value="1">Money Order/Cash</option>
+                                <option value="0">Credit card</option>
+                                <option value="">All</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4" style="padding-left:5px;">PaidFull</label>
+                        <div class="col-md-8">
+                            <input type="checkbox" name="paidfull" id="paidfull" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <div class="control-label col-md-4" style="display: flex;">Expiry date <div style="display:none;" id="showexpiredays">&nbsp;(<span style="color:red">*</span>)</div></div>
+                        <div class="col-md-8 date date-picker" data-date-format=" dd mm yyyy" style="display: flex;">
+                            <input type="text" name="expiredays" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;select expiredays" id="expiredays" class="searchs form-control" style="padding:0;" />
+                            <button class="btn default btn-picker search-date" type="button" style="padding: 3px 8px !important; border-radius: 0 !important; "><i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--E Row 4-->
+            <div class="row">
+                <div class="col-md-4 mtop10">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Money order</label>
+                        <div class="col-md-8">
+                            <input type="text" name="money_order" placeholder="Input money order" id="money_order" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10 view_payment_method">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Name on card <span class="checkCredit"> (<span style="color:red">*</span>)</span></label>
+                        <div class="col-md-8">
+                            <input type="text" name="name_on_card" placeholder="Input name on card" id="name_on_card" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10 view_payment_method">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Card number <span class="checkCredit"> (<span style="color:red">*</span>)</span></label>
+                        <div class="col-md-8">
+                            <input type="text" name="card_number" maxlength="16" placeholder="Input card number" id="card_number" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mtop10 view_payment_method">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">CVV <span class="checkCredit"> (<span style="color:red">*</span>)</span></label>
+                        <div class="col-md-8">
+                            <input type="text" name="cvv" maxlength="4" placeholder="Input cvv" id="cvv" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mtop10 view_payment_method">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Expdate <span class="checkCredit"> (<span style="color:red">*</span>)</span></label>
+                        <div class="col-md-8">
+                            <input type="text" name="expdate" maxlength="4" placeholder="MMYY(0918)" id="expdate" class="searchs form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mtop10"> </div><!--E box-->
     <!--S box-->
     <div class="box">
         <div class="box-header with-border">
@@ -156,12 +235,18 @@
                             Refresh
                         </button>
                     </li>
-                   <!--<li id="edit">
+                    <li id="saves">
+                        <button class="button">
+                            <i class="fa fa-plus"></i>
+                            Add
+                        </button>
+                    </li>
+                    <li id="edits">
                         <button class="button">
                             <i class="fa fa-save"></i>
                             Edit
                         </button>
-                    </li>-->
+                    </li>
                     <li id="delete">
                         <button type="button" class="button">
                             <i class="fa fa-times"></i>
@@ -179,7 +264,7 @@
                     <div id="tHeader">
                         <table width="100%" cellspacing="0" border="1" class="table ">
                             @{
-                                for (var i = 1; i < 13; i++)
+                                for (var i = 1; i < 19; i++)
                                 {
                                     <col class="c@{@i}">
                                 }
@@ -188,15 +273,22 @@
                             <tr>
                                 <th><input type="checkbox" id="checkAll" autocomplete="off" /></th>
                                 <th>No.</th>
-                                <th>Name on card</th>
+                                <th>Customer number</th>
+                                <th>First name</th>
+                                <th>Last name</th>
                                 <th>Email</th>
+                                <th>Phone number</th>
+                                <th>Payment method</th>
+                                <th>PaidFull</th>
+                                <th>Expiry date</th>
+                                <th>Name on card</th>
                                 <th>Country</th>
                                 <th>Zip code</th>
                                 <th>Date create</th>
                                 <th>Profile ID</th>
-                                <th>Status</th>
-                                <th>Active</th>
-                                <th>Date cancel</th>
+                                <!--<th>Date cancel</th>-->
+                                <th>Money</th>
+                                <th>Money Order</th>
                                 <th></th>
                             </tr>
                         </table>
@@ -208,7 +300,7 @@
                     <div id="gridView">
                         <table id="group" width="100%" cellspacing="0" border="1">
                             @{
-                                for (var i = 1; i < 13; i++)
+                                for (var i = 1; i < 19; i++)
                                 {
                                     <col class="c@{@i}">
                                 }
@@ -237,6 +329,9 @@
     </div>
 </div>
 <input type="hidden" name="id" id="id" />
+<input type="hidden" name="acount_type" id="acount_type" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.twbsPagination.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/plugins/datepicker/bootstrap-datepicker.js")"></script>
 <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.twbsPagination.js")"></script>
 <script type="text/javascript">
@@ -264,16 +359,39 @@
         $("#refresh").click(function () {
             refresh();
         });
-        $("#save").click(function () {
+        $("#saves").click(function () {
             save();
         });
-        $("#edit").click(function () {
-            edit();
+        $("#edits").click(function () {
+            edits();
         });
         $("#delete").click(function () {
             var id = getCheckedId();
             var del = confirmDelete(id);
         });
+        $('.date-picker').datepicker({
+            locale: 'en',
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+        });
+        $("#paidfull").prop('checked', false);
+        //showexpiredays
+        $("#showexpiredays").hide();
+        $("#paidfull").click(function () {
+            var checpaidfull = $(this).is(":checked"); 
+            if (checpaidfull == true) {
+                $("#showexpiredays").show();
+                var currentdate = new Date(); 
+                var timeWeek = new Date(currentdate.getFullYear() + 1, currentdate.getMonth(), currentdate.getDate());
+                var fromdate = timeWeek.getDate() + "/" + (timeWeek.getMonth() + 1) + "/" + timeWeek.getFullYear();
+                $('#expiredays').val(fromdate);
+            }
+            else {
+                $("#showexpiredays").hide();
+                $('#expiredays').val("");
+            }
+        });
+        $("#acount_type,#id").val("");
         init();
         getListSearch();
         //writeUserData();
@@ -295,31 +413,7 @@
         });
     }
     function getListSearch() {
-
-        /**S Update data sync*/
-        /*var refs = firebase.database().ref(table);
-        refs.on('child_added', function (snapshot) {
-            var message = snapshot.val();
-            var key = snapshot.key;
-            if (typeof message.issync !== 'undefined') { } else {
-                var updates = {};
-                updates[table + "/" + key + "/issync"] = 0;
-                firebase.database().ref().update(updates);
-            }
-        }); */
-        /**E Update data sync*/
         $("#gridRows").html("");
-        /*var ref = firebase.database().ref(table);
-        ref = ref.orderByChild("issync").equalTo(0);
-        var i = 0;
-        ref.on('child_added', function (snapshot) {
-            var message = snapshot.val();
-            var key = snapshot.key;
-            if (message.issync == 0) {
-                addDataToServer(key, message);
-            }
-        });*/
-       
         getListDataSearch(funcGet);
     }
     function paging(total) {
@@ -335,7 +429,7 @@
         });
     }
     function getListDataSearch(func) {
-        var search = getSearch(); 
+        var search = getSearchMember(); 
         $(".loading").show();
         $.ajax({
             url: funcGet,
@@ -355,28 +449,69 @@
         });
     }
     function funcList(obj) {
-        $(".edit").each(function (e) {
-            $(this).click(function () {
-                var id = $(this).attr("id");
-                var isdelete = $(this).attr("isdelete");
-                var isstatus = $(this).attr("isstatus");
-                var name_on_card = $('.name_on_card').eq(e).html();
-                
-                var datecreate = $('.datecreate').eq(e).html();
-                var email = $('.email').eq(e).html();
-                var country = $('.country').eq(e).html();
-                var zip_code = $('.zip_code').eq(e).html();
-
-                
-                $('#id').val(id);
-                $('#name_on_card').val(name_on_card);
+        $(document.body).on("click", ".edit", function () {
+            var e = $(".edit").index($(this));
+            var id = $(".edit").eq(e).attr("id");
+            var paidfull = $(".edit").eq(e).attr("paidfull");
+            var payment_method = $(this).attr("payment_method");
+            if (payment_method != "") {
+                payment_method = payment_method.trim();
+            }
+            var name_on_card = $('.name_on_card').eq(e).html();
+            if (name_on_card != "") {
+                name_on_card = name_on_card.trim();
+            }
+            var datecreate = $('.datecreate').eq(e).html();
+            var email = $('.email').eq(e).html();
+            if (email != "") {
+                email = email.trim();
+            }
+            var country = $('.country').eq(e).html();
+            if (country != "") {
+                country = country.trim();
+            }
+            var zip_code = $('.zip_code').eq(e).html();
+            if (zip_code != "") {
+                zip_code = zip_code.trim();
+            }
+            var firstname = $('.firstname').eq(e).html();
+            if (firstname != "") {
+                firstname = firstname.trim();
+            }
+            var lastname = $('.lastname').eq(e).html();
+            if (lastname != "") {
+                lastname = lastname.trim();
+            }
+            var expiredays = $('.expiredays').eq(e).html();
+            if (expiredays != "") {
+                expiredays = expiredays.trim();
+            }
+            var phonenumber = $('.phonenumber').eq(e).html();
+            if (phonenumber != "") {
+                phonenumber = phonenumber.trim();
+            }
+            if (paidfull == "1") {
+                $("#paidfull").prop('checked', true);
+            }
+            else {
+                $("#paidfull").prop('checked', false);
+            }
+            var expiredays = $('.expiredays').eq(e).html();
+            var customer_number = $('.customer_number').eq(e).html();
+            var money_order = $('.money_order').eq(e).html();
                
-                $('#email').val(email);
-                $('#country').val(country);
-                $('#zip_code').val(zip_code);
-                $('#isdelete').multipleSelect('setSelects', isdelete.split(','));
-                $('#isstatus').multipleSelect('setSelects', isstatus.split(','));
-            });
+            $('#id').val(id);
+            $("#acount_type").val(acount_type);
+            $('#name_on_card').val(name_on_card);
+            $('#firstname').val(firstname);
+            $('#lastname').val(lastname);
+            $('#expiredays').val(expiredays);
+            $('#phonenumber').val(phonenumber);
+            $('#customer_number').val(customer_number);
+            $('#money_order').val(money_order);
+               
+            $('#email').val(email);
+            $('#payment_method').multipleSelect('setSelects', payment_method.split(','));      
         });
     }
     function addDataToServer(key, message) {
@@ -406,28 +541,153 @@
                 isSave = 1;
             }
         });
-        if (isSave == 1) {//Update trang thai da insert
+        if (isSave == 1) {
             var updates = {};
             updates[table + "/" + key + "/issync"] = 1;
             firebase.database().ref().update(updates);
         }
     }
-    function edit() {
+    function save() {
         var arr = getUniqueID();
         var isstatus = getCombo("isstatus");
         var isdelete = getCombo("isstatus");
+        var firstname = $('#firstname').val();
+        /*if (firstname == '') {
+            warning("First name can not be empty"); $('#firstname').focus(); return false;
+        }
+        var lastname = $('#lastname').val();
+        if (lastname == '') {
+            warning("Last name can not be empty"); $('#firstname').focus();  return false;
+        }*/
+        var email = $('#email').val();
+        if (email == '') {
+            warning("Email can not be empty"); $('#email').focus(); return false;
+        }
+        var password = $('#password').val();
+        if (password == '') {
+            warning("Password can not be empty"); $('#password').focus(); return false;
+        }
+        var cfpassword = $('#cfpassword').val();
+        if (password != cfpassword) {
+            warning("Confirm password incorrect"); $('#cfpassword').focus(); return false;
+        }
+        var payment_method = getCombo("payment_method"); 
+        if (payment_method == '' || payment_method == '""') {
+            warning("Select a payment method");
+            return false;
+        }
+        if (payment_method == '0') {
+            if ($('#name_on_card').val() == '') {
+                warning("Name on card can not be empty"); $('#password').focus(); return false;
+            }
+            if ($('#card_number').val() == '') {
+                warning("Card number can not be empty"); $('#password').focus(); return false;
+            }
+            if ($('#cvv').val() == '') {
+                warning("CVV can not be empty"); $('#password').focus(); return false;
+            }
+            if ($('#expdate').val() == '') {
+                warning("Expdate can not be empty"); $('#password').focus(); return false;
+            }
+        }
         
+        var checpaidfull = $("#paidfull").is(":checked");
+        var paidfull = 0;
+        if (checpaidfull == true) {
+            paidfull = 1;
+            var expiredays = $('#expiredays').val();
+            if (expiredays == '') {
+                warning("Expiredays can not be empty"); $('#expiredays').focus(); return false;
+            }
+        }
+        var search = getSearchMember();
+        var save = "@Url.Action("saveData")";
+        var data = new FormData();
+        data.append('search', search);
+        data.append('id', id);
+        data.append('paidfull', paidfull);
+        $(".loading").show();
+        $.ajax({
+            url: save,
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: data,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function (obj) {
+                $(".loading").hide();
+                if (obj.status == 1) {
+                    success("Add successfully");
+                    refresh(); return;
+                }
+                else if (obj.status == 2) {
+                    warning("Card number, CVV or expdate  incorrect.");
+                    //refresh();
+                    return;
+                }
+                else if(obj.status == 0) {
+                    error(obj.msg);
+                }
+                else {
+                    error("Add Failed");
+                }
+            }
+        });
+    }
+    function edits() {
+        var arr = getUniqueID();
         var id = $('#id').val();
-        var updates = {};
-        updates[table + "/" + id + "/isactive"] = parseInt(isstatus);
-        updates[table + "/" + id + "/isdelete"] = parseInt(isdelete);
-        firebase.database().ref().update(updates);
+        var firstname = $('#firstname').val();
+        /*if (firstname == '') {
+            warning("First name can not be empty"); $('#firstname').focus(); return false;
+        }
+        var lastname = $('#lastname').val();
+        if (lastname == '') {
+            warning("Last name can not be empty"); $('#firstname').focus(); return false;
+        }*/
+        var email = $('#email').val();
+        if (email == '') {
+            warning("Email can not be empty"); $('#email').focus(); return false;
+        }
+        var cfpassword = $('#cfpassword').val();
+        var password = $('#password').val();
+        if (password != cfpassword) {
+            warning("Confirm password incorrect"); $('#cfpassword').focus(); return false;
+        }
 
-       // $("#config_key_" + id).html(config_key);
-       // $("#config_value_" + id).html(config_value);
-       // $("#config_name_" + id).html(config_name);
-
-        var search = getSearch();
+        var payment_method = getCombo("payment_method");
+        var acount_type = $("#acount_type").val();
+        if (payment_method == '' || payment_method == '""') {
+            warning("Select a payment method");
+            return false;
+        }
+        var checpaidfull = $("#paidfull").is(":checked");
+        var paidfull = 0;
+        if (checpaidfull == true) {
+            paidfull = 1;
+            var expiredays = $('#expiredays').val();
+            if (expiredays == '') {
+                warning("Expiredays can not be empty"); $('#expiredays').focus(); return false;
+            }
+        }
+        if (payment_method == '0') {
+            if ($('#name_on_card').val() == '') {
+                warning("Name on card can not be empty"); $('#password').focus(); return false;
+            }
+            if ($('#card_number').val() == '') {
+                warning("Card number can not be empty"); $('#password').focus(); return false;
+            }
+            if ($('#cvv').val() == '') {
+                warning("CVV can not be empty"); $('#password').focus(); return false;
+            }
+            if ($('#expdate').val() == '') {
+                warning("Expdate can not be empty"); $('#password').focus(); return false;
+            }
+        }
+        
+        var search = getSearchMember(); 
         var edit = "@Url.Action("edits")";
         var data = new FormData();
         data.append('search', search);
@@ -446,17 +706,19 @@
                 $(".loading").hide();
                 if (obj.status == 1) {
                     success("Edit successfully");
-                    getListSearch(func);
+                    refresh(); return;
+                }
+                else if (obj.status == 0) {
+                    error(obj.msg); return false;
                 }
                 else {
-                    error("Edit Failed");
+                    error("Edit Failed"); return false;
                 }
             }
         });
-        success("Edit successfully");
     }
     function init() {
-        $(document.body).on("click", ".edit", function () {
+        /*$(document.body).on("click", ".edit", function () {
             var index = $(".edit").index($(this));
             var id = $(".edit").eq(index).attr("id");
             var config_name = $(".config_name").eq(index).html();
@@ -466,20 +728,62 @@
             $('#config_key').val(config_key);
             $('#config_value').val(config_value);
             $('#id').val(id);
-        });
+        });*/
         $("#isdelete").multipleSelect({
             filter: true,
             placeholder: 'Select a status',
             single: true
         });
-        $("#isstatus").multipleSelect({
+        $("#payment_method").multipleSelect({
             filter: true,
-            placeholder: 'Select a status',
+            placeholder: 'Select a payment method',
+            single: true,
+            onClick: function (view) {
+                var payment_method = getCombo('payment_method');
+                if (payment_method == "1") {
+                    $("#paidfull").prop('checked', false);
+                }
+                if (payment_method == "0") {
+                    $("#name_on_card").prop("disabled", false);
+                    $("#card_number").prop("disabled", false);
+                    $("#cvv").prop("disabled", false);
+                    $("#expdate").prop("disabled", false);
+                    $('.checkCredit').show();
+                }
+                else {
+                    $("#name_on_card").prop("disabled", true);
+                    $("#card_number").prop("disabled", true);
+                    $("#cvv").prop("disabled", true);
+                    $("#expdate").prop("disabled", true);
+                    $('.checkCredit').hide();
+                    $('#name_on_card').val('');
+                    $('#card_number').val('');
+                    $('#cvv').val('');
+                    $('#expdate').val('');
+                }
+            }
+        });
+        $("#country").multipleSelect({
+            filter: true,
+            placeholder: 'Select a country',
             single: true
         });
+        $("#name_on_card").prop("disabled", true);
+        $("#card_number").prop("disabled", true);
+        $("#cvv").prop("disabled", true);
+        $("#expdate").prop("disabled", true);
+        $('.checkCredit').hide();
+        //var payment_method = "1";
+        //$('#payment_method').multipleSelect('setSelects', payment_method.split(','));
     }
     function refresh() {
         $(".searchs").val("");
+        $('#country').multipleSelect('uncheckAll');
+        $('#payment_method').multipleSelect('uncheckAll');
+        $('#isstatus').multipleSelect('uncheckAll');
+        //var payment_method = "1";
+        //$('#payment_method').multipleSelect('setSelects', payment_method.split(','));
+        getListSearch();
     }
     function getUniqueID() {
         var arr = [];
@@ -500,6 +804,28 @@
     function randomNumberFromRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
+    function getSearchMember() {
+        //var str = '';
+        var obj = {};
+        $('input.searchs').each(function () {
+            var id = $(this).attr('id');
+            var val = $.trim($(this).val().trim());
+            obj[id] = val;
+        });
+        $('select.combos').each(function () {
+            var id = $(this).attr('id');
+            var val = getCombo($(this).attr('id'));
+            val = val.replace(/['"]/g, '');
+            obj[id] = val;
+        });
+        var checpaidfull = $("#paidfull").is(":checked");
+        var paidfull = 0;
+        if (checpaidfull == true) {
+            paidfull = 1;
+        } 
+        obj["paidfull"] = paidfull;
+        return JSON.stringify(obj);
+    }
     function confirmDelete(id) {
         toastr.options = {
             "closeButton": false,
@@ -519,32 +845,21 @@
             "hideMethod": "fadeOut"
         };
         var cf = cfDelete;
-        toastr.warning('<div class="txtconfirmDelete">' + cf + '</div><div class="text-center"><button type="button" onclick="okDelete(' + id + ');" id="okdelete" class="btn btn-danger">' + deletes + '</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">' + cancel + '</button></div>')
+        toastr.warning('<div class="txtconfirmDelete">' + cf + '</div><div class="text-center"><button type="button" onclick="okDelete();" id="okdelete" class="btn btn-danger">' + deletes + '</button><button type="button" id="surpriseBtn" class="btn" style="margin: 0 8px 0 8px">' + cancel + '</button></div>')
     }
-    function getCheckedKey() {
-        var strId = '';
-        $('#gridView').find('input:checked').each(function () {
-            var email = $(this).attr('email');
-            var idkey = $(this).attr('idkey');
-            idkey = idkey.trim();
-            firebase.database().ref(table+"/" + idkey).remove();
-        });
-    }
-    function okDelete(id) {
+    function okDelete() { 
         var idList = getCheckedId();
-        //var id = $('#id').val();
         var deletes = "@Url.Action("deletes")";
         var returns = 0;
-        getCheckedKey(); 
         $.ajax({
             url: deletes,
             async: false,
             type: 'POST',
             dataType: 'JSON',
-            data: { id: id },
+            data: { id: idList },
             success: function (obj) {
                 returns = 1;
-                getListSearch(func);
+                refresh();
             }
         });
         return returns;

@@ -33,6 +33,14 @@
           <Property Name="userupdate" Type="nchar" MaxLength="50" />
           <Property Name="isdelete" Type="tinyint" />
         </EntityType>
+        <EntityType Name="alert_country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_code" Type="char" MaxLength="20" />
+          <Property Name="country_name" Type="char" MaxLength="70" />
+        </EntityType>
         <EntityType Name="alert_group">
           <Key>
             <PropertyRef Name="id" />
@@ -84,6 +92,16 @@
           <Property Name="trxpnref_profile" Type="nchar" MaxLength="30" />
           <Property Name="dateactive" Type="datetime" />
           <Property Name="pnref_cancel" Type="nchar" MaxLength="30" />
+          <Property Name="firstname" Type="nchar" MaxLength="30" />
+          <Property Name="lastname" Type="nchar" MaxLength="30" />
+          <Property Name="phonenumber" Type="nchar" MaxLength="30" />
+          <Property Name="payment_method" Type="nchar" MaxLength="50" />
+          <Property Name="expiredays" Type="date" />
+          <Property Name="acount_type" Type="tinyint" />
+          <Property Name="money" Type="nchar" MaxLength="10" />
+          <Property Name="paidfull" Type="tinyint" />
+          <Property Name="money_order" Type="nchar" MaxLength="30" />
+          <Property Name="customer_number" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="alert_menu">
           <Key>
@@ -142,9 +160,20 @@
           <Property Name="userupdate" Type="nchar" MaxLength="50" />
           <Property Name="isdelete" Type="tinyint" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityContainer Name="alertModelStoreContainer">
           <EntitySet Name="alert_applink" EntityType="Self.alert_applink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alert_config" EntityType="Self.alert_config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alert_country" EntityType="Self.alert_country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alert_group" EntityType="Self.alert_group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alert_logfile" EntityType="Self.alert_logfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alert_member" EntityType="Self.alert_member" Schema="dbo" store:Type="Tables" />
@@ -152,6 +181,7 @@
           <EntitySet Name="alert_permission" EntityType="Self.alert_permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alert_subscriber" EntityType="Self.alert_subscriber" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alert_user" EntityType="Self.alert_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -165,8 +195,10 @@
           <EntitySet Name="alert_user" EntityType="alertModel.alert_user" />
           <EntitySet Name="alert_config" EntityType="alertModel.alert_config" />
           <EntitySet Name="alert_applink" EntityType="alertModel.alert_applink" />
-          <EntitySet Name="alert_member" EntityType="alertModel.alert_member" />
           <EntitySet Name="alert_logfile" EntityType="alertModel.alert_logfile" />
+          <EntitySet Name="alert_country" EntityType="alertModel.alert_country" />
+          <EntitySet Name="sysdiagrams" EntityType="alertModel.sysdiagram" />
+          <EntitySet Name="alert_member" EntityType="alertModel.alert_member" />
           </EntityContainer>
         <EntityType Name="alert_group">
           <Key>
@@ -267,6 +299,31 @@
           <Property Name="userupdate" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="isdelete" Type="Byte" />
         </EntityType>
+        <EntityType Name="alert_logfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="alert_country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_code" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="country_name" Type="String" MaxLength="70" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="alert_member">
           <Key>
             <PropertyRef Name="id" />
@@ -297,13 +354,16 @@
           <Property Name="trxpnref_profile" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="dateactive" Type="DateTime" Precision="3" />
           <Property Name="pnref_cancel" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-        </EntityType>
-        <EntityType Name="alert_logfile">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="logfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="firstname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="payment_method" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="expiredays" Type="DateTime" Precision="0" />
+          <Property Name="acount_type" Type="Byte" />
+          <Property Name="money" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="paidfull" Type="Byte" />
+          <Property Name="money_order" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="customer_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -417,9 +477,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="alert_logfile">
+            <EntityTypeMapping TypeName="alertModel.alert_logfile">
+              <MappingFragment StoreEntitySet="alert_logfile">
+                <ScalarProperty Name="logfile" ColumnName="logfile" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alert_country">
+            <EntityTypeMapping TypeName="alertModel.alert_country">
+              <MappingFragment StoreEntitySet="alert_country">
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="country_code" ColumnName="country_code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="alertModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="alert_member">
             <EntityTypeMapping TypeName="alertModel.alert_member">
               <MappingFragment StoreEntitySet="alert_member">
+                <ScalarProperty Name="customer_number" ColumnName="customer_number" />
+                <ScalarProperty Name="money_order" ColumnName="money_order" />
+                <ScalarProperty Name="paidfull" ColumnName="paidfull" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="acount_type" ColumnName="acount_type" />
+                <ScalarProperty Name="expiredays" ColumnName="expiredays" />
+                <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="pnref_cancel" ColumnName="pnref_cancel" />
                 <ScalarProperty Name="dateactive" ColumnName="dateactive" />
                 <ScalarProperty Name="trxpnref_profile" ColumnName="trxpnref_profile" />
@@ -445,14 +543,6 @@
                 <ScalarProperty Name="cvv" ColumnName="cvv" />
                 <ScalarProperty Name="card_number" ColumnName="card_number" />
                 <ScalarProperty Name="name_on_card" ColumnName="name_on_card" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="alert_logfile">
-            <EntityTypeMapping TypeName="alertModel.alert_logfile">
-              <MappingFragment StoreEntitySet="alert_logfile">
-                <ScalarProperty Name="logfile" ColumnName="logfile" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

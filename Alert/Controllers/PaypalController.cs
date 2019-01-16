@@ -283,6 +283,7 @@ namespace Alert.Controllers
             obj.ischarge = 1;
             obj.isdelete = 0;
             obj.istrial = 1;
+			obj.payment_method = "0";
             obj.datecreate = DateTime.Now;
             obj.date_create = objectData.datecreate;
             obj.name_on_card = objectData.name_on_card;

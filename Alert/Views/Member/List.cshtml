@@ -3,40 +3,67 @@
 }
 @foreach (var item in ViewBag.datas)
 {
-    string status = "";
-    if (item.isdelete == 0)
-    {
-        status = "Subscribe";
-    }
-    else
-    {
-        status = "Unsubscribe";
-    }
     string isstatus = "";
     if (item.isstatus == 0)
     {
-        isstatus = "InActive";
+        isstatus = "No";
+    }
+    else if (item.isstatus == 1)
+    {
+        isstatus = "Yes";
+    }
+    //payment_method
+    string payment_method = "";
+    string payment = item.payment_method;
+    if (payment != "")
+    {
+        payment = payment.Trim();
+    }
+    if (payment == "1")
+    {
+        payment_method = "Money Order/Cash";
     }
     else
     {
-        isstatus = "Active";
+        payment_method = "Credit card";
+    }
+    var expiredays = item.expiredays;
+    var dates = "";
+    if (expiredays != null)
+    {
+        dates = String.Format("{0:dd/MM/yyyy}", expiredays);
+    }
+    var datecreate = item.datecreate;
+    if (item.datecreate != null)
+    {
+        datecreate = String.Format("{0:dd/MM/yyyy H:i:s}", item.datecreate);
     }
     <tr class="edit"
         id="@item.id"
-        isdelete="@item.isdelete" isstatus="@item.isstatus">
+        isdelete="@item.isdelete" 
+        isstatus="@item.isstatus" 
+        paidfull="@item.paidfull" 
+        acount_type="@item.acount_type" 
+        payment_method="@item.payment_method">
         <td class="text-center">
             <input id="@item.id" idkey="@item.idkey" email="@item.email" class="" type="checkbox" value="@item.id" name="keys[]">
         </td>
         <td class="text-center">@(i += 1)</td>
-        <td class="name_on_card">@item.name_on_card</td>
+        <td class="customer_number " align="center">@item.customer_number</td>
+        <td class="firstname">@item.firstname</td>
+        <td class="lastname">@item.lastname</td>
         <td class="email">@item.email</td>
+        <td class="phonenumber">@item.phonenumber</td>
+        <td>@payment_method</td>
+        <td class="isstatus">@isstatus</td>
+        <td class="expiredays" align="center">@dates</td>
+        <td class="name_on_card">@item.name_on_card</td>
         <td class="country">@item.country</td>
         <td class="zip_code">@item.zip_code</td>
-        <td class="datecreate">@item.datecreate</td>
+        <td class="datecreate" align="center">@item.datecreate</td>
         <td class="datecreate">@item.profileid</td>
-        <td class="status">@status</td>
-        <td class="status">@isstatus</td>
-        <td class="datecreate">@item.datecancel</td>
+        <td class="datecreate">@item.money</td>
+        <td class="money_order">@item.money_order</td>
         <td></td>
     </tr>
 }

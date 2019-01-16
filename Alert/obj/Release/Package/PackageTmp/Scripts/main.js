@@ -28,7 +28,7 @@ function getSearch(){
 	$('select.combos').each(function(){
 		var id = $(this).attr('id');
 		var val = getCombo($(this).attr('id'));
-		//val = val.replace(/['"]/g, '');
+		val = val.replace(/['"]/g, '');
 		obj[id] = val;
 	});
 	return JSON.stringify(obj);
